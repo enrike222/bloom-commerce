@@ -575,3 +575,67 @@
     border-radius:10px;
 
 }
+/* Categorias Admin */
+
+
+.category-panel,
+.category-list {
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:var(--radius-medium);
+
+    box-shadow:var(--shadow-soft);
+
+    margin-bottom:30px;
+
+}
+
+
+
+.category-panel form {
+
+    display:grid;
+
+    gap:15px;
+
+}
+
+
+
+.category-panel input,
+.category-panel textarea {
+
+    padding:15px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+}
+
+
+
+.category-panel textarea {
+
+    min-height:100px;
+
+}
+
+
+
+.category-panel button {
+
+    padding:15px;
+
+    background:var(--primary-color);
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+}
