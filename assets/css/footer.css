@@ -1,0 +1,66 @@
+/* =========================
+   BLOOM
+   Footer Styles
+========================= */
+
+
+.footer {
+
+    background: #111;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 50px 5%;
+
+}
+
+
+.footer h3 {
+
+    font-size: 2rem;
+
+    margin-bottom: 15px;
+
+    color: white;
+
+}
+
+
+.footer p {
+
+    color: rgba(255,255,255,0.75);
+
+    margin: 10px 0;
+
+}
+
+
+/* Links futuros del footer */
+
+.footer a {
+
+    color: white;
+
+}
+
+
+.footer a:hover {
+
+    color: var(--secondary-color);
+
+}
+
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .footer {
+
+        padding: 40px 20px;
+
+    }
+
+}
