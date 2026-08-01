@@ -1,0 +1,80 @@
+/* =========================
+   BLOOM ADMIN
+========================= */
+
+
+.admin-login {
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:var(--accent-color);
+
+}
+
+
+.login-box {
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:var(--radius-large);
+
+    width:min(90%,400px);
+
+    text-align:center;
+
+    box-shadow:var(--shadow-soft);
+
+}
+
+
+.login-box img {
+
+    width:180px;
+
+    margin-bottom:20px;
+
+}
+
+
+.login-box input {
+
+    width:100%;
+
+    padding:15px;
+
+    margin:10px 0;
+
+    border-radius:var(--radius-small);
+
+    border:1px solid #ddd;
+
+}
+
+
+.login-box button {
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:20px;
+
+    background:var(--primary-color);
+
+    color:white;
+
+    border:none;
+
+    border-radius:var(--radius-small);
+
+    cursor:pointer;
+
+}
