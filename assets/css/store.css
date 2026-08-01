@@ -1,0 +1,112 @@
+/* =========================
+   BLOOM
+   Store Styles
+========================= */
+
+
+/* Encabezado tienda */
+
+.store-header {
+
+    text-align: center;
+
+    padding: 80px 5% 40px;
+
+}
+
+
+.store-header h1 {
+
+    color: var(--primary-color);
+
+    margin-bottom: 15px;
+
+}
+
+
+.store-header p {
+
+    font-size: 1.1rem;
+
+}
+
+
+
+/* Herramientas de búsqueda */
+
+.shop-tools {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    padding: 20px 5%;
+
+}
+
+
+.shop-tools input,
+.shop-tools select {
+
+    padding: 14px 18px;
+
+    border: 1px solid #ddd;
+
+    border-radius: var(--radius-small);
+
+    font-size: 1rem;
+
+    min-width: 250px;
+
+}
+
+
+
+/* Tarjetas productos */
+
+.product-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+}
+
+
+.product-card h3 {
+
+    color: var(--text-color);
+
+}
+
+
+.product-card strong {
+
+    color: var(--primary-color);
+
+    font-size: 1.3rem;
+
+}
+
+
+.product-card button {
+
+    margin-top: auto;
+
+}
+
+
+
+/* Animación */
+
+.product-card:hover {
+
+    transform: translateY(-8px);
+
+}
