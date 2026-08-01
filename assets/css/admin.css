@@ -318,3 +318,51 @@
     border-top:1px solid #eee;
 
 }
+/* Clientes Admin */
+
+
+.customers-panel {
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:var(--radius-medium);
+
+    box-shadow:var(--shadow-soft);
+
+    overflow-x:auto;
+
+}
+
+
+
+.customers-panel table {
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+
+.customers-panel th {
+
+    padding:15px;
+
+    text-align:left;
+
+    color:var(--primary-color);
+
+}
+
+
+
+.customers-panel td {
+
+    padding:15px;
+
+    border-top:1px solid #eee;
+
+}
