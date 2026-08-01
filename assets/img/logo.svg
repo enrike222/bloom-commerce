@@ -1,0 +1,39 @@
+<svg width="320" height="120" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<!-- Flor minimalista -->
+<g transform="translate(20,20)">
+
+<path d="M40 40
+C10 20 0 50 25 65
+C5 90 45 95 55 70
+C75 95 110 75 85 55
+C110 25 70 10 50 35
+C45 20 40 25 40 40Z"
+fill="#D9A5A5"/>
+
+<circle cx="55" cy="55" r="12" fill="#C9A45C"/>
+
+</g>
+
+
+<!-- Nombre -->
+<text x="130" y="55"
+font-family="Georgia, serif"
+font-size="38"
+letter-spacing="4"
+fill="#3E6B52">
+BLOOM
+</text>
+
+
+<!-- Subtitulo -->
+<text x="132" y="82"
+font-family="Arial, sans-serif"
+font-size="13"
+letter-spacing="2"
+fill="#6B6B6B">
+FLORISTERÍA &amp; DETALLES
+</text>
+
+
+</svg>
