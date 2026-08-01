@@ -1,42 +1,44 @@
 :root {
 
-    /* Colores principales Bloom-Commerce */
-    --primary-color: #1f6f5f;
-    --secondary-color: #d8b36a;
-    --accent-color: #f7efe5;
+    /* Identidad Bloom Floristería */
+    --primary-color: #3E6B52;
+    --secondary-color: #D9A5A5;
+    --accent-color: #F8F1E7;
+    --gold-color: #C9A45C;
 
-    --background-color: #ffffff;
-    --surface-color: #f8f8f8;
+    --background-color: #FFFFFF;
+    --surface-color: #FCF8F3;
 
-    --text-color: #1b1b1b;
-    --text-light: #666666;
+    --text-color: #2B2B2B;
+    --text-light: #6B6B6B;
+
 
     /* Estados */
-    --success-color: #2e8b57;
-    --danger-color: #c0392b;
+    --success-color: #4F8A5B;
+    --danger-color: #B85C5C;
 
 
     /* Tipografía */
-    --font-main: "Inter", Arial, sans-serif;
+    --font-main: "Cormorant Garamond", "Playfair Display", Georgia, serif;
 
 
-    /* Tamaños */
+    /* Contenedor */
     --container-width: 1200px;
 
 
     /* Bordes */
     --radius-small: 8px;
-    --radius-medium: 16px;
-    --radius-large: 24px;
+    --radius-medium: 18px;
+    --radius-large: 30px;
 
 
     /* Sombras */
     --shadow-soft:
-        0 10px 30px rgba(0,0,0,0.08);
+    0 15px 35px rgba(0,0,0,0.08);
 
 
-    /* Transiciones */
+    /* Animaciones */
     --transition:
-        all 0.3s ease;
+    all 0.35s ease;
 
 }
