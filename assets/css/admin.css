@@ -270,3 +270,51 @@
     font-size:1.2rem;
 
 }
+/* Pedidos Admin */
+
+
+.orders-panel {
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:var(--radius-medium);
+
+    box-shadow:var(--shadow-soft);
+
+    overflow-x:auto;
+
+}
+
+
+
+.orders-panel table {
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+
+.orders-panel th {
+
+    text-align:left;
+
+    color:var(--primary-color);
+
+    padding:15px;
+
+}
+
+
+
+.orders-panel td {
+
+    padding:15px;
+
+    border-top:1px solid #eee;
+
+}
