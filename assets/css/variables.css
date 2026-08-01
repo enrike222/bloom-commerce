@@ -1,0 +1,42 @@
+:root {
+
+    /* Colores principales Bloom-Commerce */
+    --primary-color: #1f6f5f;
+    --secondary-color: #d8b36a;
+    --accent-color: #f7efe5;
+
+    --background-color: #ffffff;
+    --surface-color: #f8f8f8;
+
+    --text-color: #1b1b1b;
+    --text-light: #666666;
+
+    /* Estados */
+    --success-color: #2e8b57;
+    --danger-color: #c0392b;
+
+
+    /* Tipografía */
+    --font-main: "Inter", Arial, sans-serif;
+
+
+    /* Tamaños */
+    --container-width: 1200px;
+
+
+    /* Bordes */
+    --radius-small: 8px;
+    --radius-medium: 16px;
+    --radius-large: 24px;
+
+
+    /* Sombras */
+    --shadow-soft:
+        0 10px 30px rgba(0,0,0,0.08);
+
+
+    /* Transiciones */
+    --transition:
+        all 0.3s ease;
+
+}

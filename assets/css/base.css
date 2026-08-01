@@ -1,0 +1,146 @@
+/* =========================
+   BLOOM-COMMERCE
+   Base Styles
+========================= */
+
+
+/* Reset básico */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family: var(--font-main);
+
+    background: var(--background-color);
+
+    color: var(--text-color);
+
+    line-height: 1.6;
+
+}
+
+
+/* Contenedor general */
+
+.container {
+
+    width: min(90%, var(--container-width));
+
+    margin: auto;
+
+}
+
+
+/* Textos */
+
+h1,
+h2,
+h3 {
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+}
+
+
+h1 {
+
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+
+}
+
+
+h2 {
+
+    font-size: clamp(2rem, 4vw, 3rem);
+
+}
+
+
+p {
+
+    color: var(--text-light);
+
+}
+
+
+/* Enlaces */
+
+a {
+
+    text-decoration: none;
+
+    color: inherit;
+
+    transition: var(--transition);
+
+}
+
+
+/* Botones generales */
+
+button {
+
+    border: none;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+}
+
+
+/* Imágenes */
+
+img {
+
+    max-width: 100%;
+
+    display: block;
+
+}
+
+
+/* Secciones */
+
+section {
+
+    padding: 80px 5%;
+
+}
+
+
+/* Tarjetas */
+
+.card {
+
+    background: white;
+
+    border-radius: var(--radius-medium);
+
+    box-shadow: var(--shadow-soft);
+
+    padding: 25px;
+
+    transition: var(--transition);
+
+}
+
+
+.card:hover {
+
+    transform: translateY(-5px);
+
+}
