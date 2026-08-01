@@ -366,3 +366,76 @@
     border-top:1px solid #eee;
 
 }
+/* Configuracion Admin */
+
+
+.settings-panel {
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:var(--radius-medium);
+
+    box-shadow:var(--shadow-soft);
+
+    max-width:700px;
+
+}
+
+
+
+.settings-panel form {
+
+    display:grid;
+
+    gap:15px;
+
+}
+
+
+
+.settings-panel label {
+
+    color:var(--primary-color);
+
+    font-weight:bold;
+
+}
+
+
+
+.settings-panel input,
+.settings-panel textarea {
+
+    padding:15px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+}
+
+
+
+.settings-panel textarea {
+
+    min-height:120px;
+
+}
+
+
+
+.settings-panel button {
+
+    background:var(--primary-color);
+
+    color:white;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:10px;
+
+}
