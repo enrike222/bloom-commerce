@@ -35,11 +35,20 @@
 
 .logo {
 
-    font-size: 1.5rem;
+    display: flex;
 
-    font-weight: 800;
+    align-items: center;
 
-    color: var(--primary-color);
+}
+
+
+.logo img {
+
+    width: 190px;
+
+    height: auto;
+
+    display: block;
 
 }
 
@@ -142,5 +151,13 @@
 
     }
 
+@media(max-width:768px){
 
+    .logo img {
+
+        width: 160px;
+
+    }
+
+}
 }
