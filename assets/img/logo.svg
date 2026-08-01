@@ -1,36 +1,71 @@
-<svg width="320" height="120" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="420" height="140" viewBox="0 0 420 140" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-<!-- Flor minimalista -->
-<g transform="translate(20,20)">
+<!-- Icono floral -->
+<g transform="translate(25,15)">
 
-<path d="M40 40
-C10 20 0 50 25 65
-C5 90 45 95 55 70
-C75 95 110 75 85 55
-C110 25 70 10 50 35
-C45 20 40 25 40 40Z"
-fill="#D9A5A5"/>
+<!-- Pétalos -->
+<path d="M55 55
+C20 35 15 5 45 10
+C70 15 72 38 60 55Z"
+fill="#D8A7A7"/>
 
-<circle cx="55" cy="55" r="12" fill="#C9A45C"/>
+<path d="M55 55
+C75 20 105 20 95 50
+C90 75 65 75 55 60Z"
+fill="#E8C3C3"/>
+
+<path d="M55 60
+C30 80 40 110 65 95
+C85 85 75 65 60 58Z"
+fill="#D8A7A7"/>
+
+<path d="M60 58
+C85 75 110 65 105 95
+C90 115 65 90 55 65Z"
+fill="#E8C3C3"/>
+
+
+<!-- Centro de flor -->
+<circle cx="58" cy="58" r="10" fill="#C7A05A"/>
+
+
+<!-- Tallo -->
+<path d="M58 70
+C55 90 50 105 35 115"
+stroke="#3E6B52"
+stroke-width="4"
+stroke-linecap="round"/>
 
 </g>
 
 
-<!-- Nombre -->
-<text x="130" y="55"
+
+<!-- Nombre principal -->
+
+<text x="150" y="65"
 font-family="Georgia, serif"
-font-size="38"
-letter-spacing="4"
+font-size="48"
+letter-spacing="6"
 fill="#3E6B52">
 BLOOM
 </text>
 
 
+
+<!-- Línea decorativa -->
+
+<line x1="155" y1="82" x2="360" y2="82"
+stroke="#C7A05A"
+stroke-width="1"/>
+
+
+
 <!-- Subtitulo -->
-<text x="132" y="82"
-font-family="Arial, sans-serif"
-font-size="13"
-letter-spacing="2"
+
+<text x="155" y="108"
+font-family="Georgia, serif"
+font-size="16"
+letter-spacing="3"
 fill="#6B6B6B">
 FLORISTERÍA &amp; DETALLES
 </text>
