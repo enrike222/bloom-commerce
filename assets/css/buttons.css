@@ -1,0 +1,96 @@
+/* =========================
+   BLOOM
+   Button Styles
+========================= */
+
+
+/* Botón principal */
+
+.btn-primary {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 14px 32px;
+
+    background: var(--primary-color);
+
+    color: white;
+
+    border-radius: var(--radius-small);
+
+    font-weight: 600;
+
+    transition: var(--transition);
+
+}
+
+
+.btn-primary:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: var(--shadow-soft);
+
+}
+
+
+/* Botón secundario */
+
+.btn-secondary {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 14px 32px;
+
+    background: transparent;
+
+    color: var(--primary-color);
+
+    border: 2px solid var(--primary-color);
+
+    border-radius: var(--radius-small);
+
+    font-weight: 600;
+
+    transition: var(--transition);
+
+}
+
+
+.btn-secondary:hover {
+
+    background: var(--primary-color);
+
+    color: white;
+
+}
+
+
+/* Botones generales */
+
+.btn {
+
+    padding: 12px 24px;
+
+    border-radius: var(--radius-small);
+
+    font-weight: 600;
+
+    transition: var(--transition);
+
+}
+
+
+.btn:hover {
+
+    transform: translateY(-2px);
+
+}
