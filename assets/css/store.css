@@ -1,21 +1,25 @@
 /* =========================
-   BLOOM
-   Store Styles
+   BLOOM FLORISTERÍA
+   Store Boutique Styles
 ========================= */
 
 
-/* Encabezado tienda */
+/* Encabezado */
 
 .store-header {
 
     text-align: center;
 
-    padding: 80px 5% 40px;
+    padding: 90px 5% 50px;
+
+    background: var(--accent-color);
 
 }
 
 
 .store-header h1 {
+
+    font-size: clamp(2.5rem,5vw,4rem);
 
     color: var(--primary-color);
 
@@ -26,13 +30,13 @@
 
 .store-header p {
 
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 
 }
 
 
 
-/* Herramientas de búsqueda */
+/* Buscador */
 
 .shop-tools {
 
@@ -42,9 +46,9 @@
 
     gap: 20px;
 
-    flex-wrap: wrap;
+    padding: 40px 5%;
 
-    padding: 20px 5%;
+    flex-wrap: wrap;
 
 }
 
@@ -52,61 +56,150 @@
 .shop-tools input,
 .shop-tools select {
 
-    padding: 14px 18px;
+    width: 280px;
 
-    border: 1px solid #ddd;
+    padding: 15px 20px;
 
     border-radius: var(--radius-small);
 
-    font-size: 1rem;
+    border: 1px solid #ddd;
 
-    min-width: 250px;
+    background: white;
+
+    font-size: 1rem;
 
 }
 
 
 
-/* Tarjetas productos */
+/* Grid productos */
+
+.product-grid {
+
+    width: min(90%, var(--container-width));
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(280px,1fr)
+    );
+
+    gap: 35px;
+
+    padding-bottom: 80px;
+
+}
+
+
+
+/* Tarjeta floral */
 
 .product-card {
 
-    display: flex;
+    background: white;
 
-    flex-direction: column;
+    border-radius: var(--radius-large);
 
-    gap: 15px;
+    overflow: hidden;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow: var(--shadow-soft);
+
+    transition: var(--transition);
 
 }
+
+
+.product-card:hover {
+
+    transform: translateY(-10px);
+
+}
+
+
+
+/* Imagen temporal */
+
+.product-image {
+
+    height: 220px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size: 90px;
+
+    background: var(--accent-color);
+
+    border-radius: var(--radius-medium);
+
+    margin-bottom: 25px;
+
+}
+
 
 
 .product-card h3 {
 
-    color: var(--text-color);
+    color: var(--primary-color);
+
+    font-size: 1.5rem;
+
+    margin-bottom: 12px;
 
 }
+
+
+
+.product-card p {
+
+    margin-bottom: 20px;
+
+}
+
 
 
 .product-card strong {
 
-    color: var(--primary-color);
+    display:block;
 
-    font-size: 1.3rem;
+    color: var(--gold-color);
 
-}
+    font-size:1.4rem;
 
-
-.product-card button {
-
-    margin-top: auto;
+    margin-bottom:20px;
 
 }
 
 
 
-/* Animación */
+/* Botón */
 
-.product-card:hover {
+.product-card .btn-primary {
 
-    transform: translateY(-8px);
+    width:100%;
+
+}
+
+
+
+/* Responsive */
+
+@media(max-width:600px){
+
+    .product-grid {
+
+        grid-template-columns:1fr;
+
+    }
 
 }
