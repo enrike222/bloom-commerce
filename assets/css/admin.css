@@ -78,3 +78,112 @@
     cursor:pointer;
 
 }
+/* Dashboard Admin */
+
+.admin-panel {
+
+    display:flex;
+
+    min-height:100vh;
+
+    background:var(--surface-color);
+
+}
+
+
+.sidebar {
+
+    width:260px;
+
+    background:white;
+
+    padding:30px;
+
+    box-shadow:var(--shadow-soft);
+
+}
+
+
+.sidebar img {
+
+    width:170px;
+
+    margin-bottom:40px;
+
+}
+
+
+.sidebar a {
+
+    display:block;
+
+    padding:12px;
+
+    color:var(--text-color);
+
+    text-decoration:none;
+
+    border-radius:10px;
+
+}
+
+
+.sidebar a:hover {
+
+    background:var(--accent-color);
+
+    color:var(--primary-color);
+
+}
+
+
+
+.admin-content {
+
+    flex:1;
+
+    padding:40px;
+
+}
+
+
+
+.stats {
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-top:40px;
+
+}
+
+
+
+.admin-card {
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:var(--radius-medium);
+
+    box-shadow:var(--shadow-soft);
+
+}
+
+
+
+.admin-card strong {
+
+    display:block;
+
+    font-size:2.5rem;
+
+    color:var(--primary-color);
+
+    margin:15px 0;
+
+}
