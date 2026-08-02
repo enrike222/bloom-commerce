@@ -1,3 +1,5 @@
+console.log("products Admin cargado correctamente");
+
 const productForm = document.getElementById("productForm");
 
 productForm.addEventListener("submit", function(e) {
