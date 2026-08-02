@@ -4,39 +4,38 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Categorías | Bloom Admin</title>
+
+<title>Bloom | Categorías</title>
+
 
 <link rel="stylesheet" href="../assets/css/variables.css">
+
+<link rel="stylesheet" href="../assets/css/base.css">
+
+<link rel="stylesheet" href="../assets/css/buttons.css">
+
+<link rel="stylesheet" href="../assets/css/cards.css">
+
+<link rel="stylesheet" href="../assets/css/animations.css">
+
+<link rel="stylesheet" href="../assets/css/sidebar.css">
+
 <link rel="stylesheet" href="../assets/css/admin.css">
 
+
 </head>
+
 
 
 <body class="admin-panel">
 
 
-<aside class="sidebar">
 
-<img src="../assets/img/logo.svg" alt="Bloom">
+<div id="sidebar-container"></div>
 
-
-<nav>
-
-<a href="dashboard.html">Dashboard</a>
-<a href="productos.html">Productos</a>
-<a href="pedidos.html">Pedidos</a>
-<a href="clientes.html">Clientes</a>
-<a href="categorias.html">Categorías</a>
-<a href="promociones.html">Promociones</a>
-<a href="reportes.html">Reportes</a>
-<a href="usuarios.html">Usuarios</a>
-<a href="configuracion.html">Configuración</a>
-
-</nav>
-
-</aside>
 
 
 
@@ -44,22 +43,29 @@
 <main class="admin-content">
 
 
-<header class="admin-header">
+
+<header class="page-header">
+
 
 <h1>
-Categorías Bloom
+🗂️ Categorías
 </h1>
 
+
 <p>
-Organiza tus productos por colecciones.
+Crea y organiza las categorías de tus productos Bloom.
 </p>
+
 
 </header>
 
 
 
 
+
+
 <section class="category-panel">
+
 
 
 <h2>
@@ -68,31 +74,40 @@ Nueva categoría
 
 
 
-<form>
+<form id="categoryForm">
 
 
-<input 
+
+<input
 type="text"
+id="categoryName"
 placeholder="Nombre de categoría"
->
+required>
 
 
 
 <textarea
+id="categoryDescription"
 placeholder="Descripción">
 </textarea>
 
 
 
-<button>
+<button type="submit">
+
 Guardar categoría
+
 </button>
+
 
 
 </form>
 
 
+
 </section>
+
+
 
 
 
@@ -101,29 +116,56 @@ Guardar categoría
 <section class="category-list">
 
 
+
 <h2>
 Categorías creadas
 </h2>
 
 
+
+<div id="categoriesContainer">
+
+
 <div class="empty-state">
 
-🌸
-
-<p>
-No hay categorías registradas.
-</p>
+No hay categorías creadas.
 
 </div>
+
+
+</div>
+
 
 
 </section>
 
 
 
+
+
+
 </main>
 
 
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script src="../assets/js/supabase.js"></script>
+
+
+<script src="../assets/js/components.js"></script>
+
+
+<script src="../assets/js/categories.js"></script>
+
+
+
 </body>
+
 
 </html>

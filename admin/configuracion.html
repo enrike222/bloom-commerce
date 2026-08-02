@@ -4,55 +4,67 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Configuración | Bloom Admin</title>
+
+<title>Bloom | Configuración</title>
+
+
 
 <link rel="stylesheet" href="../assets/css/variables.css">
+
+<link rel="stylesheet" href="../assets/css/base.css">
+
+<link rel="stylesheet" href="../assets/css/buttons.css">
+
+<link rel="stylesheet" href="../assets/css/cards.css">
+
+<link rel="stylesheet" href="../assets/css/animations.css">
+
+<link rel="stylesheet" href="../assets/css/sidebar.css">
+
 <link rel="stylesheet" href="../assets/css/admin.css">
 
+
 </head>
+
 
 
 <body class="admin-panel">
 
 
-<aside class="sidebar">
 
-<img src="../assets/img/logo.svg" alt="Bloom">
+<div id="sidebar-container"></div>
 
 
-<nav>
 
-<a href="dashboard.html">Dashboard</a>
-<a href="productos.html">Productos</a>
-<a href="pedidos.html">Pedidos</a>
-<a href="clientes.html">Clientes</a>
-<a href="categorias.html">Categorías</a>
-<a href="promociones.html">Promociones</a>
-<a href="reportes.html">Reportes</a>
-<a href="configuracion.html">Configuración</a>
 
-</nav>
-
-</aside>
 
 
 
 <main class="admin-content">
 
 
-<header class="admin-header">
+
+<header class="page-header">
+
 
 <h1>
-Configuración Bloom
+⚙️ Configuración
 </h1>
 
+
 <p>
-Administra la información principal de la tienda.
+Personaliza la información principal de tu tienda Bloom.
 </p>
 
+
 </header>
+
+
+
+
 
 
 
@@ -60,81 +72,162 @@ Administra la información principal de la tienda.
 <section class="settings-panel">
 
 
+
 <h2>
 Información de la tienda
 </h2>
 
 
-<form>
+
+
+
+<form id="settingsForm">
+
 
 
 <label>
 Nombre de la tienda
 </label>
 
-<input 
+
+<input
 type="text"
-value="Bloom Floristería"
->
+id="storeName"
+placeholder="Bloom">
+
+
+
 
 
 
 <label>
-WhatsApp
+Correo de contacto
 </label>
 
-<input 
-type="text"
-placeholder="+502 XXXX XXXX"
->
+
+<input
+type="email"
+id="storeEmail"
+placeholder="correo@ejemplo.com">
+
+
+
 
 
 
 <label>
-Instagram
+Teléfono
 </label>
 
-<input 
+
+<input
 type="text"
-placeholder="@bloomfloristeria.gt"
->
+id="storePhone"
+placeholder="Número de contacto">
+
+
+
 
 
 
 <label>
-Dirección
+Descripción
 </label>
 
-<input 
-type="text"
-placeholder="Dirección de la tienda"
->
-
-
-
-<label>
-Horario de atención
-</label>
 
 <textarea
-placeholder="Lunes a sábado 9:00 AM - 6:00 PM">
+id="storeDescription"
+placeholder="Descripción de tu tienda">
 </textarea>
 
 
 
-<button>
+
+
+
+<button type="submit">
+
 Guardar cambios
+
 </button>
 
 
+
 </form>
+
 
 
 </section>
 
 
 
+
+
+
+
+
+<section class="settings-panel">
+
+
+
+<h2>
+Preferencias
+</h2>
+
+
+
+<label>
+
+<input 
+type="checkbox"
+id="darkMode">
+
+Modo oscuro
+
+</label>
+
+
+
+
+<label>
+
+<input 
+type="checkbox"
+id="notifications">
+
+Activar notificaciones
+
+</label>
+
+
+
+</section>
+
+
+
+
+
+
+
 </main>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script src="../assets/js/supabase.js"></script>
+
+
+<script src="../assets/js/components.js"></script>
+
+
+<script src="../assets/js/settings.js"></script>
+
 
 
 </body>

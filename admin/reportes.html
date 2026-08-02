@@ -4,38 +4,40 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reportes | Bloom Admin</title>
+
+<title>Bloom | Reportes</title>
+
+
 
 <link rel="stylesheet" href="../assets/css/variables.css">
+
+<link rel="stylesheet" href="../assets/css/base.css">
+
+<link rel="stylesheet" href="../assets/css/buttons.css">
+
+<link rel="stylesheet" href="../assets/css/cards.css">
+
+<link rel="stylesheet" href="../assets/css/animations.css">
+
+<link rel="stylesheet" href="../assets/css/sidebar.css">
+
 <link rel="stylesheet" href="../assets/css/admin.css">
 
+
 </head>
+
 
 
 <body class="admin-panel">
 
 
-<aside class="sidebar">
 
-<img src="../assets/img/logo.svg" alt="Bloom">
+<div id="sidebar-container"></div>
 
 
-<nav>
-
-<a href="dashboard.html">Dashboard</a>
-<a href="productos.html">Productos</a>
-<a href="pedidos.html">Pedidos</a>
-<a href="clientes.html">Clientes</a>
-<a href="categorias.html">Categorías</a>
-<a href="promociones.html">Promociones</a>
-<a href="reportes.html">Reportes</a>
-<a href="configuracion.html">Configuración</a>
-
-</nav>
-
-</aside>
 
 
 
@@ -43,78 +45,25 @@
 <main class="admin-content">
 
 
-<header class="admin-header">
+
+<header class="page-header">
+
 
 <h1>
-Reportes Bloom
+📊 Reportes
 </h1>
 
+
 <p>
-Analiza el rendimiento de tu floristería.
+Analiza el rendimiento de tu tienda Bloom.
 </p>
+
 
 </header>
 
 
 
-<section class="stats">
 
-
-<div class="admin-card">
-
-<h3>
-Ventas
-</h3>
-
-<strong>
-Q0
-</strong>
-
-<p>
-Este mes
-</p>
-
-</div>
-
-
-
-<div class="admin-card">
-
-<h3>
-Pedidos entregados
-</h3>
-
-<strong>
-0
-</strong>
-
-<p>
-Completados
-</p>
-
-</div>
-
-
-
-<div class="admin-card">
-
-<h3>
-Producto favorito
-</h3>
-
-<strong>
--
-</strong>
-
-<p>
-Más vendido
-</p>
-
-</div>
-
-
-
-</section>
 
 
 
@@ -122,21 +71,175 @@ Más vendido
 <section class="report-panel">
 
 
+
 <h2>
-Resumen de actividad
+Resumen general
 </h2>
 
 
+
+<div class="stats">
+
+
+
+<div class="admin-card">
+
+
+<h3>
+Ventas
+</h3>
+
+
+<strong id="reportSales">
+Q0
+</strong>
+
+
 <p>
-Aquí aparecerán gráficos y estadísticas cuando conectemos la base de datos.
+Total vendido
 </p>
+
+
+</div>
+
+
+
+
+
+<div class="admin-card">
+
+
+<h3>
+Pedidos
+</h3>
+
+
+<strong id="reportOrders">
+0
+</strong>
+
+
+<p>
+Pedidos realizados
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="admin-card">
+
+
+<h3>
+Clientes
+</h3>
+
+
+<strong id="reportCustomers">
+0
+</strong>
+
+
+<p>
+Clientes registrados
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="admin-card">
+
+
+<h3>
+Productos
+</h3>
+
+
+<strong id="reportProducts">
+0
+</strong>
+
+
+<p>
+Productos activos
+</p>
+
+
+</div>
+
+
+
+</div>
+
 
 
 </section>
 
 
 
+
+
+
+
+
+<section class="report-panel">
+
+
+
+<h2>
+Actividad de ventas
+</h2>
+
+
+
+<div id="salesChart">
+
+
+<p class="empty-state">
+
+La gráfica aparecerá cuando existan datos.
+
+</p>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
 </main>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script src="../assets/js/supabase.js"></script>
+
+
+<script src="../assets/js/components.js"></script>
+
+
+<script src="../assets/js/reports.js"></script>
+
 
 
 </body>

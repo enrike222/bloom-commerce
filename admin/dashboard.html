@@ -4,12 +4,24 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard | Bloom Admin</title>
+<title>Bloom | Dashboard</title>
+
 
 <link rel="stylesheet" href="../assets/css/variables.css">
+
+<link rel="stylesheet" href="../assets/css/base.css">
+
+<link rel="stylesheet" href="../assets/css/animations.css">
+
+<link rel="stylesheet" href="../assets/css/cards.css">
+
 <link rel="stylesheet" href="../assets/css/admin.css">
+
+<link rel="stylesheet" href="../assets/css/sidebar.css">
+
 
 </head>
 
@@ -17,48 +29,29 @@
 <body class="admin-panel">
 
 
-<aside class="sidebar">
+<!-- SIDEBAR -->
 
-<img src="../assets/img/logo.svg" alt="Bloom">
-
-
-<nav>
-
-<a href="dashboard.html">Dashboard</a>
-
-<a href="productos.html">Productos</a>
-
-<a href="pedidos.html">Pedidos</a>
-
-<a href="clientes.html">Clientes</a>
-
-<a href="categorias.html">Categorías</a>
-
-<a href="promociones.html">Promociones</a>
-
-<a href="reportes.html">Reportes</a>
-
-<a href="configuracion.html">Configuración</a>
-
-</nav>
+<div id="sidebar-container"></div>
 
 
-</aside>
 
-
+<!-- CONTENIDO -->
 
 <main class="admin-content">
 
 
-<header class="admin-header">
+<header class="page-header">
 
-<h1>
-Bienvenido a Bloom 🌿
-</h1>
 
-<p>
-Panel de administración de la floristería
-</p>
+    <h1>
+        Bienvenido a Bloom 🌸
+    </h1>
+
+
+    <p>
+        Gestiona tu tienda desde aquí.
+    </p>
+
 
 </header>
 
@@ -67,73 +60,101 @@ Panel de administración de la floristería
 <section class="stats">
 
 
-<div class="admin-card">
+    <div class="admin-card">
 
-<h3>
-Productos
-</h3>
+        <h3>
+            Productos
+        </h3>
 
-<strong>
-0
-</strong>
+        <strong id="totalProducts">
+            0
+        </strong>
+
+        <p>
+            Productos disponibles
+        </p>
+
+    </div>
+
+
+
+
+    <div class="admin-card">
+
+        <h3>
+            Pedidos
+        </h3>
+
+        <strong id="totalOrders">
+            0
+        </strong>
+
+        <p>
+            Pedidos realizados
+        </p>
+
+    </div>
+
+
+
+
+    <div class="admin-card">
+
+        <h3>
+            Clientes
+        </h3>
+
+        <strong id="totalCustomers">
+            0
+        </strong>
+
+        <p>
+            Clientes registrados
+        </p>
+
+    </div>
+
+
+
+
+    <div class="admin-card">
+
+        <h3>
+            Ventas
+        </h3>
+
+        <strong id="totalSales">
+            Q0
+        </strong>
+
+        <p>
+            Ventas totales
+        </p>
+
+    </div>
+
+
+
+</section>
+
+
+
+
+<section class="report-panel">
+
+
+<h2>
+    Actividad reciente
+</h2>
+
+
+<div id="recentActivity">
+
 
 <p>
-Arreglos activos
+🌸 Esperando nuevos datos...
 </p>
 
-</div>
-
-
-
-<div class="admin-card">
-
-<h3>
-Pedidos
-</h3>
-
-<strong>
-0
-</strong>
-
-<p>
-Pedidos pendientes
-</p>
-
-</div>
-
-
-
-<div class="admin-card">
-
-<h3>
-Clientes
-</h3>
-
-<strong>
-0
-</strong>
-
-<p>
-Clientes registrados
-</p>
-
-</div>
-
-
-
-<div class="admin-card">
-
-<h3>
-Ventas
-</h3>
-
-<strong>
-Q0
-</strong>
-
-<p>
-Este mes
-</p>
 
 </div>
 
@@ -142,7 +163,23 @@ Este mes
 
 
 
+
 </main>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script src="../assets/js/supabase.js"></script>
+
+
+<script src="../assets/js/components.js"></script>
+
+
+<script src="../assets/js/dashboard.js"></script>
+
 
 
 </body>

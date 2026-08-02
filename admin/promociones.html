@@ -4,38 +4,40 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Promociones | Bloom Admin</title>
+
+<title>Bloom | Promociones</title>
+
+
 
 <link rel="stylesheet" href="../assets/css/variables.css">
+
+<link rel="stylesheet" href="../assets/css/base.css">
+
+<link rel="stylesheet" href="../assets/css/buttons.css">
+
+<link rel="stylesheet" href="../assets/css/cards.css">
+
+<link rel="stylesheet" href="../assets/css/animations.css">
+
+<link rel="stylesheet" href="../assets/css/sidebar.css">
+
 <link rel="stylesheet" href="../assets/css/admin.css">
 
+
 </head>
+
 
 
 <body class="admin-panel">
 
 
-<aside class="sidebar">
 
-<img src="../assets/img/logo.svg" alt="Bloom">
+<div id="sidebar-container"></div>
 
 
-<nav>
-
-<a href="dashboard.html">Dashboard</a>
-<a href="productos.html">Productos</a>
-<a href="pedidos.html">Pedidos</a>
-<a href="clientes.html">Clientes</a>
-<a href="categorias.html">Categorías</a>
-<a href="promociones.html">Promociones</a>
-<a href="reportes.html">Reportes</a>
-<a href="configuracion.html">Configuración</a>
-
-</nav>
-
-</aside>
 
 
 
@@ -43,22 +45,30 @@
 <main class="admin-content">
 
 
-<header class="admin-header">
+
+<header class="page-header">
+
 
 <h1>
-Promociones Bloom
+🎁 Promociones
 </h1>
 
+
 <p>
-Crea ofertas y campañas especiales.
+Crea ofertas y promociones especiales para tus clientes.
 </p>
+
 
 </header>
 
 
 
 
+
+
+
 <section class="promo-panel">
+
 
 
 <h2>
@@ -67,70 +77,65 @@ Nueva promoción
 
 
 
-<form>
+<form id="promoForm">
 
 
-<input 
+
+<input
 type="text"
-placeholder="Nombre de promoción"
->
+id="promoTitle"
+placeholder="Nombre de la promoción"
+required>
+
 
 
 <textarea
+id="promoDescription"
 placeholder="Descripción de la promoción">
 </textarea>
 
 
 
-<input 
+<input
 type="number"
-placeholder="Porcentaje de descuento"
->
+id="promoDiscount"
+placeholder="Descuento (%)">
 
 
 
-<label>
-Fecha inicio
-</label>
-
-<input 
-type="date"
->
+<select id="promoStatus">
 
 
-<label>
-Fecha final
-</label>
-
-<input 
-type="date"
->
-
-
-
-<select>
-
-<option>
+<option value="activa">
 Activa
 </option>
 
-<option>
-Finalizada
+
+<option value="inactiva">
+Inactiva
 </option>
+
 
 </select>
 
 
 
-<button>
+
+<button type="submit">
+
 Guardar promoción
+
 </button>
+
 
 
 </form>
 
 
+
 </section>
+
+
 
 
 
@@ -139,27 +144,53 @@ Guardar promoción
 <section class="promo-list">
 
 
+
 <h2>
 Promociones actuales
 </h2>
 
 
+
+<div id="promotionsContainer">
+
+
 <div class="empty-state">
 
-🎁
-
-<p>
 No hay promociones creadas.
-</p>
 
 </div>
+
+
+</div>
+
 
 
 </section>
 
 
 
+
+
+
 </main>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script src="../assets/js/supabase.js"></script>
+
+
+<script src="../assets/js/components.js"></script>
+
+
+<script src="../assets/js/promotions.js"></script>
+
 
 
 </body>

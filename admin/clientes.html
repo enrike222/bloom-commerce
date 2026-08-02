@@ -4,55 +4,65 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Clientes | Bloom Admin</title>
+
+<title>Bloom | Clientes</title>
+
+
 
 <link rel="stylesheet" href="../assets/css/variables.css">
+
+<link rel="stylesheet" href="../assets/css/base.css">
+
+<link rel="stylesheet" href="../assets/css/buttons.css">
+
+<link rel="stylesheet" href="../assets/css/cards.css">
+
+<link rel="stylesheet" href="../assets/css/animations.css">
+
+<link rel="stylesheet" href="../assets/css/sidebar.css">
+
 <link rel="stylesheet" href="../assets/css/admin.css">
 
+
 </head>
+
 
 
 <body class="admin-panel">
 
 
-<aside class="sidebar">
 
-<img src="../assets/img/logo.svg" alt="Bloom">
+<div id="sidebar-container"></div>
 
 
-<nav>
 
-<a href="dashboard.html">Dashboard</a>
-<a href="productos.html">Productos</a>
-<a href="pedidos.html">Pedidos</a>
-<a href="clientes.html">Clientes</a>
-<a href="categorias.html">Categorías</a>
-<a href="promociones.html">Promociones</a>
-<a href="reportes.html">Reportes</a>
-<a href="configuracion.html">Configuración</a>
-
-</nav>
-
-</aside>
 
 
 
 <main class="admin-content">
 
 
-<header class="admin-header">
+
+<header class="page-header">
+
 
 <h1>
-Clientes Bloom
+👥 Clientes
 </h1>
 
+
 <p>
-Información de compradores y contactos.
+Administra la información de tus clientes.
 </p>
 
+
 </header>
+
+
+
 
 
 
@@ -60,7 +70,20 @@ Información de compradores y contactos.
 <section class="customers-panel">
 
 
+
+<h2>
+Clientes registrados
+</h2>
+
+
+
+
+<div class="table-container">
+
+
+
 <table>
+
 
 
 <thead>
@@ -71,17 +94,26 @@ Información de compradores y contactos.
 Nombre
 </th>
 
-<th>
-Teléfono
-</th>
 
 <th>
 Correo
 </th>
 
+
 <th>
-Pedidos
+Teléfono
 </th>
+
+
+<th>
+Dirección
+</th>
+
+
+<th>
+Acciones
+</th>
+
 
 </tr>
 
@@ -89,26 +121,19 @@ Pedidos
 
 
 
-<tbody>
+
+
+<tbody id="customersTable">
 
 
 <tr>
 
-<td>
-Sin clientes registrados
+<td colspan="5" class="empty-state">
+
+No hay clientes registrados.
+
 </td>
 
-<td>
--
-</td>
-
-<td>
--
-</td>
-
-<td>
-0
-</td>
 
 </tr>
 
@@ -116,16 +141,46 @@ Sin clientes registrados
 </tbody>
 
 
+
+
 </table>
+
+
+
+</div>
+
 
 
 </section>
 
 
 
+
+
+
 </main>
 
 
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script src="../assets/js/supabase.js"></script>
+
+
+<script src="../assets/js/components.js"></script>
+
+
+<script src="../assets/js/customers.js"></script>
+
+
+
 </body>
+
 
 </html>

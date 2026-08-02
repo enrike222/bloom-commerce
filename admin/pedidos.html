@@ -4,63 +4,86 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pedidos | Bloom Admin</title>
+
+<title>Bloom | Clientes</title>
+
+
 
 <link rel="stylesheet" href="../assets/css/variables.css">
+
+<link rel="stylesheet" href="../assets/css/base.css">
+
+<link rel="stylesheet" href="../assets/css/buttons.css">
+
+<link rel="stylesheet" href="../assets/css/cards.css">
+
+<link rel="stylesheet" href="../assets/css/animations.css">
+
+<link rel="stylesheet" href="../assets/css/sidebar.css">
+
 <link rel="stylesheet" href="../assets/css/admin.css">
 
+
 </head>
+
 
 
 <body class="admin-panel">
 
 
-<aside class="sidebar">
 
-<img src="../assets/img/logo.svg" alt="Bloom">
+<div id="sidebar-container"></div>
 
 
-<nav>
 
-<a href="dashboard.html">Dashboard</a>
-<a href="productos.html">Productos</a>
-<a href="pedidos.html">Pedidos</a>
-<a href="clientes.html">Clientes</a>
-<a href="categorias.html">Categorías</a>
-<a href="promociones.html">Promociones</a>
-<a href="reportes.html">Reportes</a>
-<a href="configuracion.html">Configuración</a>
-
-</nav>
-
-</aside>
 
 
 
 <main class="admin-content">
 
 
-<header class="admin-header">
+
+<header class="page-header">
+
 
 <h1>
-Pedidos Bloom
+👥 Clientes
 </h1>
 
+
 <p>
-Gestiona las compras y entregas de clientes.
+Administra la información de tus clientes.
 </p>
+
 
 </header>
 
 
 
 
-<section class="orders-panel">
+
+
+
+<section class="customers-panel">
+
+
+
+<h2>
+Clientes registrados
+</h2>
+
+
+
+
+<div class="table-container">
+
 
 
 <table>
+
 
 
 <thead>
@@ -68,24 +91,29 @@ Gestiona las compras y entregas de clientes.
 <tr>
 
 <th>
-Pedido
+Nombre
 </th>
 
-<th>
-Cliente
-</th>
 
 <th>
-Producto
+Correo
 </th>
 
-<th>
-Entrega
-</th>
 
 <th>
-Estado
+Teléfono
 </th>
+
+
+<th>
+Dirección
+</th>
+
+
+<th>
+Acciones
+</th>
+
 
 </tr>
 
@@ -93,33 +121,17 @@ Estado
 
 
 
-<tbody>
+
+
+<tbody id="customersTable">
 
 
 <tr>
 
-<td>
-#001
-</td>
+<td colspan="5" class="empty-state">
 
+No hay clientes registrados.
 
-<td>
-Sin pedidos
-</td>
-
-
-<td>
--
-</td>
-
-
-<td>
--
-</td>
-
-
-<td>
-Pendiente
 </td>
 
 
@@ -129,16 +141,46 @@ Pendiente
 </tbody>
 
 
+
+
 </table>
+
+
+
+</div>
+
 
 
 </section>
 
 
 
+
+
+
 </main>
 
 
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script src="../assets/js/supabase.js"></script>
+
+
+<script src="../assets/js/components.js"></script>
+
+
+<script src="../assets/js/customers.js"></script>
+
+
+
 </body>
+
 
 </html>

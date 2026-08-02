@@ -3,6 +3,8 @@
 ========================= */
 
 
+/* LOGIN */
+
 .admin-login {
 
     min-height:100vh;
@@ -78,7 +80,12 @@
     cursor:pointer;
 
 }
-/* Dashboard Admin */
+
+
+/* =========================
+   ADMIN LAYOUT
+========================= */
+
 
 .admin-panel {
 
@@ -91,48 +98,12 @@
 }
 
 
-.sidebar {
+
+#sidebar-container {
 
     width:260px;
 
-    background:white;
-
-    padding:30px;
-
-    box-shadow:var(--shadow-soft);
-
-}
-
-
-.sidebar img {
-
-    width:170px;
-
-    margin-bottom:40px;
-
-}
-
-
-.sidebar a {
-
-    display:block;
-
-    padding:12px;
-
-    color:var(--text-color);
-
-    text-decoration:none;
-
-    border-radius:10px;
-
-}
-
-
-.sidebar a:hover {
-
-    background:var(--accent-color);
-
-    color:var(--primary-color);
+    flex-shrink:0;
 
 }
 
@@ -146,6 +117,11 @@
 
 }
 
+
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
 
 
 .stats {
@@ -172,6 +148,16 @@
 
     box-shadow:var(--shadow-soft);
 
+    transition:.3s ease;
+
+}
+
+
+
+.admin-card:hover {
+
+    transform:translateY(-8px);
+
 }
 
 
@@ -187,7 +173,12 @@
     margin:15px 0;
 
 }
-/* Productos Admin */
+
+
+
+/* =========================
+   PRODUCTOS
+========================= */
 
 
 .product-admin-form,
@@ -259,189 +250,135 @@
 
 
 
-.empty-state {
+/* PRODUCT CARDS */
 
-    text-align:center;
 
-    padding:40px;
-
-    color:var(--text-light);
-
-    font-size:1.2rem;
-
-}
-/* Pedidos Admin */
-
-
-.orders-panel {
-
-    background:white;
-
-    padding:35px;
-
-    border-radius:var(--radius-medium);
-
-    box-shadow:var(--shadow-soft);
-
-    overflow-x:auto;
-
-}
-
-
-
-.orders-panel table {
-
-    width:100%;
-
-    border-collapse:collapse;
-
-}
-
-
-
-.orders-panel th {
-
-    text-align:left;
-
-    color:var(--primary-color);
-
-    padding:15px;
-
-}
-
-
-
-.orders-panel td {
-
-    padding:15px;
-
-    border-top:1px solid #eee;
-
-}
-/* Clientes Admin */
-
-
-.customers-panel {
-
-    background:white;
-
-    padding:35px;
-
-    border-radius:var(--radius-medium);
-
-    box-shadow:var(--shadow-soft);
-
-    overflow-x:auto;
-
-}
-
-
-
-.customers-panel table {
-
-    width:100%;
-
-    border-collapse:collapse;
-
-}
-
-
-
-.customers-panel th {
-
-    padding:15px;
-
-    text-align:left;
-
-    color:var(--primary-color);
-
-}
-
-
-
-.customers-panel td {
-
-    padding:15px;
-
-    border-top:1px solid #eee;
-
-}
-/* Configuracion Admin */
-
-
-.settings-panel {
-
-    background:white;
-
-    padding:35px;
-
-    border-radius:var(--radius-medium);
-
-    box-shadow:var(--shadow-soft);
-
-    max-width:700px;
-
-}
-
-
-
-.settings-panel form {
+#productsContainer {
 
     display:grid;
 
-    gap:15px;
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
 
 }
 
 
 
-.settings-panel label {
+.product-card {
 
-    color:var(--primary-color);
+    background:white;
 
-    font-weight:bold;
+    border-radius:24px;
 
-}
+    padding:20px;
 
+    overflow:hidden;
 
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.12);
 
-.settings-panel input,
-.settings-panel textarea {
-
-    padding:15px;
-
-    border:1px solid #ddd;
-
-    border-radius:10px;
+    transition:.35s ease;
 
 }
 
 
 
-.settings-panel textarea {
+.product-card:hover {
 
-    min-height:120px;
+    transform:
+    translateY(-10px)
+    rotateX(3deg);
+
+    box-shadow:
+    0 25px 50px rgba(0,0,0,.20);
 
 }
 
 
 
-.settings-panel button {
+.product-card img {
 
-    background:var(--primary-color);
+    width:100%;
 
-    color:white;
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    transition:.4s ease;
+
+}
+
+
+
+.product-card:hover img {
+
+    transform:scale(1.06);
+
+}
+
+
+
+.product-card h3 {
+
+    margin-top:18px;
+
+    font-size:22px;
+
+}
+
+
+
+.product-card p {
+
+    color:#555;
+
+}
+
+
+
+.product-card button {
 
     border:none;
 
-    padding:15px;
+    padding:10px 18px;
 
-    border-radius:10px;
+    margin-top:15px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.25s ease;
 
 }
-/* Promociones Admin */
 
 
+
+.product-card button:hover {
+
+    transform:translateY(-3px);
+
+}
+
+
+
+/* =========================
+   TABLAS
+========================= */
+
+
+.orders-panel,
+.customers-panel,
+.report-panel,
+.users-panel,
+.users-list,
+.settings-panel,
+.category-panel,
+.category-list,
 .promo-panel,
 .promo-list {
 
@@ -459,7 +396,44 @@
 
 
 
-.promo-panel form {
+table {
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+
+th {
+
+    color:var(--primary-color);
+
+    padding:15px;
+
+    text-align:left;
+
+}
+
+
+
+td {
+
+    padding:15px;
+
+    border-top:1px solid #eee;
+
+}
+
+
+
+/* =========================
+   FORMULARIOS
+========================= */
+
+
+form {
 
     display:grid;
 
@@ -469,325 +443,38 @@
 
 
 
-.promo-panel input,
-.promo-panel textarea,
-.promo-panel select {
+input,
+select,
+textarea {
 
-    padding:15px;
-
-    border-radius:10px;
-
-    border:1px solid #ddd;
+    font-family:inherit;
 
 }
 
 
 
-.promo-panel textarea {
-
-    min-height:120px;
-
-}
+/* =========================
+   EMPTY STATE
+========================= */
 
 
-.promo-panel button {
+.empty-state {
 
-    padding:15px;
+    text-align:center;
 
-    background:var(--primary-color);
+    padding:40px;
 
-    color:white;
-
-    border:none;
-
-    border-radius:10px;
-
-}
-/* Reportes Admin */
-
-
-.report-panel {
-
-    margin-top:30px;
-
-    background:white;
-
-    padding:35px;
-
-    border-radius:var(--radius-medium);
-
-    box-shadow:var(--shadow-soft);
-
-}
-/* Usuarios Admin */
-
-
-.users-panel,
-.users-list {
-
-    background:white;
-
-    padding:35px;
-
-    border-radius:var(--radius-medium);
-
-    box-shadow:var(--shadow-soft);
-
-    margin-bottom:30px;
+    color:var(--text-light);
 
 }
 
 
 
-.users-panel form {
+/* =========================
+   EDIT MODE
+========================= */
 
-    display:grid;
 
-    gap:15px;
-
-}
-
-
-
-.users-panel input,
-.users-panel select {
-
-    padding:15px;
-
-    border:1px solid #ddd;
-
-    border-radius:10px;
-
-}
-
-
-
-.users-panel button {
-
-    padding:15px;
-
-    background:var(--primary-color);
-
-    color:white;
-
-    border:none;
-
-    border-radius:10px;
-
-}
-/* Categorias Admin */
-
-
-.category-panel,
-.category-list {
-
-    background:white;
-
-    padding:35px;
-
-    border-radius:var(--radius-medium);
-
-    box-shadow:var(--shadow-soft);
-
-    margin-bottom:30px;
-
-}
-
-
-
-.category-panel form {
-
-    display:grid;
-
-    gap:15px;
-
-}
-
-
-
-.category-panel input,
-.category-panel textarea {
-
-    padding:15px;
-
-    border:1px solid #ddd;
-
-    border-radius:10px;
-
-}
-
-
-
-.category-panel textarea {
-
-    min-height:100px;
-
-}
-
-
-
-.category-panel button {
-
-    padding:15px;
-
-    background:var(--primary-color);
-
-    color:white;
-
-    border:none;
-
-    border-radius:10px;
-
-}
-.product-card img {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-/* ==================================
-   BLOOM PRODUCTS - PREMIUM 3D CARDS
-   ================================== */
-
-
-#productsContainer {
-
-    display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-
-    gap: 25px;
-
-    width: 100%;
-
-    margin-top: 25px;
-
-}
-
-
-
-.product-card {
-
-    background: white;
-
-    border-radius: 24px;
-
-    padding: 20px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,0.12);
-
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease;
-
-    position: relative;
-
-}
-
-
-
-.product-card:hover {
-
-    transform:
-        translateY(-10px)
-        rotateX(3deg);
-
-    box-shadow:
-        0 25px 50px rgba(0,0,0,0.20);
-
-}
-
-
-
-.product-card img {
-
-    width: 100%;
-
-    height: 220px;
-
-    object-fit: cover;
-
-    border-radius: 18px;
-
-    display: block;
-
-    transition:
-        transform .4s ease;
-
-}
-
-
-
-.product-card:hover img {
-
-    transform: scale(1.06);
-
-}
-
-
-
-.product-card h3 {
-
-    margin-top: 18px;
-
-    font-size: 22px;
-
-    font-weight: 700;
-
-}
-
-
-
-.product-card p {
-
-    margin: 8px 0;
-
-    font-size: 15px;
-
-    color: #555;
-
-}
-
-
-
-/* BOTONES */
-
-.product-card button {
-
-    border: none;
-
-    padding: 10px 18px;
-
-    margin-top: 15px;
-
-    margin-right: 8px;
-
-    border-radius: 14px;
-
-    cursor: pointer;
-
-    font-weight: 600;
-
-    transition: 
-        transform .25s ease,
-        box-shadow .25s ease;
-
-}
-
-
-
-.product-card button:hover {
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 8px 18px rgba(0,0,0,0.15);
-
-}
 .edit-message {
 
     display:none;

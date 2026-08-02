@@ -4,55 +4,63 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Productos | Bloom Admin</title>
+
+<title>Bloom | Productos</title>
+
+
 
 <link rel="stylesheet" href="../assets/css/variables.css">
+
+<link rel="stylesheet" href="../assets/css/base.css">
+
+<link rel="stylesheet" href="../assets/css/buttons.css">
+
+<link rel="stylesheet" href="../assets/css/cards.css">
+
+<link rel="stylesheet" href="../assets/css/animations.css">
+
+<link rel="stylesheet" href="../assets/css/sidebar.css">
+
 <link rel="stylesheet" href="../assets/css/admin.css">
 
+
 </head>
+
 
 
 <body class="admin-panel">
 
 
-<aside class="sidebar">
 
-<img src="../assets/img/logo.svg" alt="Bloom">
+<!-- SIDEBAR -->
 
+<div id="sidebar-container"></div>
 
-<nav>
-
-<a href="dashboard.html">Dashboard</a>
-<a href="productos.html">Productos</a>
-<a href="pedidos.html">Pedidos</a>
-<a href="clientes.html">Clientes</a>
-<a href="categorias.html">Categorías</a>
-<a href="promociones.html">Promociones</a>
-<a href="reportes.html">Reportes</a>
-<a href="configuracion.html">Configuración</a>
-
-</nav>
-
-</aside>
 
 
 
 <main class="admin-content">
 
 
-<header class="admin-header">
+
+<header class="page-header">
+
 
 <h1>
-Productos Bloom
+🌸 Productos Bloom
 </h1>
 
+
 <p>
-Administra tus flores y arreglos.
+Administra tus productos, precios e imágenes.
 </p>
 
+
 </header>
+
 
 
 
@@ -61,95 +69,125 @@ Administra tus flores y arreglos.
 
 
 <h2>
-Nuevo producto
+Agregar producto
 </h2>
 
-<div id="editModeMessage" class="edit-message">
-</div>
+
+
 
 <form id="productForm">
 
 
+
 <input 
-id="productName"
 type="text"
+id="productName"
 placeholder="Nombre del producto"
-required
->
+required>
+
 
 
 
 <input 
-id="productPrice"
 type="number"
+id="productPrice"
 placeholder="Precio"
-required
->
+required>
 
 
 
-<select id="productCategory">
+
+
+<select id="productCategory" required>
+
 
 <option value="">
-Seleccionar categoría
+Selecciona categoría
 </option>
+
 
 <option value="Ramos">
 Ramos
 </option>
 
+
 <option value="Arreglos">
 Arreglos
 </option>
+
+
+<option value="Eventos">
+Eventos
+</option>
+
 
 <option value="Regalos">
 Regalos
 </option>
 
+
 </select>
+
+
 
 
 
 <textarea
 id="productDescription"
-placeholder="Descripción del producto">
+placeholder="Descripción">
 </textarea>
 
 
 
-<label>
-Imagen del producto
-</label>
+
 
 <input 
-id="productImage"
 type="file"
-accept="image/*"
->
+id="productImage"
+accept="image/*">
+
+
 
 
 
 <select id="productStatus">
 
+
 <option value="disponible">
 Disponible
 </option>
+
 
 <option value="agotado">
 Agotado
 </option>
 
+
 </select>
 
 
 
-<button id="saveProductBtn" type="submit">
+
+<button id="saveProductBtn"
+type="submit">
+
 Guardar producto
+
 </button>
 
-<button id="cancelEditBtn" type="button" style="display:none;">
+
+
+<button 
+id="cancelEditBtn"
+type="button"
+style="display:none;">
+
+
 Cancelar edición
+
+
 </button>
+
 
 
 </form>
@@ -169,20 +207,38 @@ Productos registrados
 </h2>
 
 
+
 <div id="productsContainer">
 
+
 </div>
+
 
 
 </section>
 
 
 
+
+</main>
+
+
+
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <script src="../assets/js/supabase.js"></script>
 
+
+<script src="../assets/js/components.js"></script>
+
+
 <script src="../assets/js/productsadmin.js"></script>
+
 
 
 </body>

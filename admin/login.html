@@ -4,63 +4,91 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin | Bloom</title>
+<title>Bloom | Login</title>
+
 
 <link rel="stylesheet" href="../assets/css/variables.css">
+
+<link rel="stylesheet" href="../assets/css/base.css">
+
+<link rel="stylesheet" href="../assets/css/buttons.css">
+
+<link rel="stylesheet" href="../assets/css/animations.css">
+
 <link rel="stylesheet" href="../assets/css/admin.css">
+
 
 </head>
 
 
-<body class="admin-login">
+<body>
 
 
-<div class="login-box">
+<section class="admin-login">
 
 
-<img src="../assets/img/logo.svg" 
-alt="Bloom Floristería">
+    <div class="login-box bloom-card">
 
 
-<h1>
-Panel Bloom
-</h1>
+        <img 
+        src="../assets/img/logo.svg" 
+        alt="Bloom">
 
 
-<p>
-Administración de la floristería
-</p>
+        <h1>
+            Bloom
+        </h1>
 
 
-
-<form>
-
-
-<input 
-type="email"
-placeholder="Correo administrador"
->
+        <p>
+            Panel administrativo
+        </p>
 
 
 
-<input 
-type="password"
-placeholder="Contraseña"
->
+        <form id="loginForm">
+
+
+            <input 
+            type="email"
+            id="email"
+            placeholder="Correo electrónico"
+            required>
+
+
+            <input 
+            type="password"
+            id="password"
+            placeholder="Contraseña"
+            required>
 
 
 
-<button>
-Ingresar
-</button>
+            <button type="submit">
+
+                Entrar
+
+            </button>
 
 
-</form>
+        </form>
 
 
-</div>
+    </div>
+
+
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../assets/js/supabase.js"></script>
+
+<script src="../assets/js/login.js"></script>
 
 
 </body>
