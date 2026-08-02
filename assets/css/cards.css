@@ -1,0 +1,147 @@
+/* ==============================
+   BLOOM PRODUCT CARDS
+============================== */
+
+
+.product-card {
+
+    background: rgba(255,255,255,0.9);
+
+    border-radius: 24px;
+
+    padding: 18px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.08);
+
+    transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+
+    overflow: hidden;
+
+}
+
+
+
+
+.product-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:
+    0 25px 50px rgba(0,0,0,0.15);
+
+}
+
+
+
+
+
+.product-card img {
+
+
+    width:100%;
+
+    aspect-ratio:1 / 1;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    display:block;
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+
+
+.product-card h3 {
+
+
+    font-size:1.2rem;
+
+    margin-bottom:8px;
+
+    color:#2d2d2d;
+
+
+}
+
+
+
+
+
+
+
+.product-card p {
+
+
+    margin:6px 0;
+
+    color:#666;
+
+
+}
+
+
+
+
+
+
+
+.product-card button {
+
+
+    border:none;
+
+    padding:10px 16px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    margin-top:10px;
+
+    margin-right:6px;
+
+    background:#1f8f55;
+
+    color:white;
+
+    transition:.25s;
+
+
+}
+
+
+
+
+
+.product-card button:hover {
+
+
+    transform:scale(1.05);
+
+}
+
+
+
+
+.products-grid {
+
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(240px,1fr));
+
+    gap:25px;
+
+
+}

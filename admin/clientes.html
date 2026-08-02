@@ -55,11 +55,82 @@
 
 
 <p>
-Administra la información de tus clientes.
+Gestiona tus clientes Bloom.
 </p>
 
 
 </header>
+
+
+
+
+
+<section class="customers-panel">
+
+
+<h2 id="customerFormTitle">
+Nuevo cliente
+</h2>
+
+
+
+<form id="customerForm">
+
+
+<input
+type="text"
+id="customerName"
+placeholder="Nombre completo"
+required>
+
+
+
+<input
+type="email"
+id="customerEmail"
+placeholder="Correo electrónico"
+required>
+
+
+
+<input
+type="text"
+id="customerPhone"
+placeholder="Teléfono">
+
+
+
+<input
+type="text"
+id="customerAddress"
+placeholder="Dirección">
+
+
+
+<button type="submit" id="saveCustomerBtn">
+
+Guardar cliente
+
+</button>
+
+
+
+<button 
+type="button"
+id="cancelEditCustomer"
+style="display:none">
+
+Cancelar edición
+
+</button>
+
+
+
+</form>
+
+
+</section>
+
 
 
 
@@ -74,6 +145,14 @@ Administra la información de tus clientes.
 <h2>
 Clientes registrados
 </h2>
+
+
+
+<input
+type="search"
+id="customerSearch"
+placeholder="🔎 Buscar cliente...">
+
 
 
 
@@ -117,6 +196,7 @@ Acciones
 
 </tr>
 
+
 </thead>
 
 
@@ -126,16 +206,7 @@ Acciones
 <tbody id="customersTable">
 
 
-<tr>
 
-<td colspan="5" class="empty-state">
-
-No hay clientes registrados.
-
-</td>
-
-
-</tr>
 
 
 </tbody>

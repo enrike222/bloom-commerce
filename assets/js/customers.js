@@ -1,127 +1,371 @@
 console.log("customers.js cargado");
 
 
-async function loadCustomers(){
+const customerForm = document.getElementById(
+    "customerForm"
+);
 
 
-    const { data, error } = await supabaseClient
+let currentCustomerId = null;
 
-        .from("clientes")
 
-        .select("*")
 
-        .order("created_at", {
-            ascending:false
-        });
+// ==============================
+// GUARDAR / ACTUALIZAR CLIENTE
+// ==============================
 
+if(customerForm){
 
 
-    if(error){
+customerForm.addEventListener(
+"submit",
+async function(e){
 
-        console.error(
-            "Error cargando clientes:",
-            error
-        );
 
-        return;
+e.preventDefault();
 
-    }
 
 
+const cliente = {
 
-    const table = document.getElementById(
-        "customersTable"
-    );
 
+nombre:
+document.getElementById(
+"customerName"
+).value,
 
 
-    if(!table) return;
+email:
+document.getElementById(
+"customerEmail"
+).value,
 
 
+telefono:
+document.getElementById(
+"customerPhone"
+).value,
 
-    table.innerHTML = "";
 
+direccion:
+document.getElementById(
+"customerAddress"
+).value
 
 
-    if(data.length === 0){
+};
 
 
-        table.innerHTML = `
 
-        <tr>
 
-        <td colspan="5" class="empty-state">
 
-        No hay clientes registrados.
 
-        </td>
+let result;
 
-        </tr>
 
-        `;
 
+// EDITAR
 
-        return;
+if(currentCustomerId){
 
-    }
 
 
+result = await supabaseClient
 
+.from("clientes")
 
-    data.forEach(cliente => {
+.update(cliente)
 
+.eq(
+"id",
+currentCustomerId
+);
 
 
-        const row = document.createElement("tr");
 
+}
 
 
-        row.innerHTML = `
 
+// CREAR
 
-        <td>
-        ${cliente.nombre}
-        </td>
+else {
 
 
-        <td>
-        ${cliente.email}
-        </td>
 
+result = await supabaseClient
 
-        <td>
-        ${cliente.telefono || "Sin teléfono"}
-        </td>
+.from("clientes")
 
+.insert([cliente]);
 
-        <td>
-        ${cliente.direccion || "Sin dirección"}
-        </td>
 
+}
 
-        <td>
 
 
-        <button onclick="viewCustomer('${cliente.id}')">
 
-        Ver
 
-        </button>
+if(result.error){
 
 
-        </td>
+console.error(
+result.error
+);
 
 
+alert(
+"No se pudo guardar el cliente"
+);
 
-        `;
 
+return;
 
 
-        table.appendChild(row);
+}
 
 
 
-    });
+
+
+alert(
+currentCustomerId
+?
+"Cliente actualizado"
+:
+"Cliente creado"
+);
+
+
+
+
+
+
+customerForm.reset();
+
+
+
+currentCustomerId = null;
+
+
+
+document.getElementById(
+"customerFormTitle"
+).textContent =
+"Nuevo cliente";
+
+
+
+document.getElementById(
+"saveCustomerBtn"
+).textContent =
+"Guardar cliente";
+
+
+
+document.getElementById(
+"cancelEditCustomer"
+).style.display =
+"none";
+
+
+
+loadCustomers();
+
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+// ==============================
+// CARGAR CLIENTES
+// ==============================
+
+
+async function loadCustomers(search=""){
+
+
+
+let query = supabaseClient
+
+.from("clientes")
+
+.select("*")
+
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+
+
+
+
+if(search){
+
+
+query = query.ilike(
+"nombre",
+`%${search}%`
+);
+
+
+}
+
+
+
+
+
+const {data,error} =
+await query;
+
+
+
+
+
+if(error){
+
+
+console.error(error);
+
+return;
+
+
+}
+
+
+
+
+
+
+
+const table =
+document.getElementById(
+"customersTable"
+);
+
+
+
+if(!table)return;
+
+
+
+table.innerHTML="";
+
+
+
+
+
+
+if(data.length===0){
+
+
+
+table.innerHTML=`
+
+<tr>
+
+<td colspan="5" class="empty-state">
+
+No hay clientes.
+
+</td>
+
+</tr>
+
+`;
+
+return;
+
+
+}
+
+
+
+
+
+
+
+data.forEach(cliente=>{
+
+
+
+const row =
+document.createElement("tr");
+
+
+
+row.innerHTML = `
+
+
+
+<td>
+${cliente.nombre}
+</td>
+
+
+
+<td>
+${cliente.email}
+</td>
+
+
+
+<td>
+${cliente.telefono || "-"}
+</td>
+
+
+
+<td>
+${cliente.direccion || "-"}
+</td>
+
+
+
+<td>
+
+
+
+<button onclick="editCustomer('${cliente.id}')">
+
+✏️ Editar
+
+</button>
+
+
+
+<button onclick="deleteCustomer('${cliente.id}')">
+
+🗑️ Eliminar
+
+</button>
+
+
+
+</td>
+
+
+
+`;
+
+
+
+table.appendChild(row);
+
+
+
+});
 
 
 
@@ -131,15 +375,271 @@ async function loadCustomers(){
 
 
 
-function viewCustomer(id){
 
 
-    alert(
-        "Cliente ID: " + id
-    );
+// ==============================
+// EDITAR CLIENTE
+// ==============================
+
+
+async function editCustomer(id){
+
+
+
+const {data,error}=
+
+await supabaseClient
+
+.from("clientes")
+
+.select("*")
+
+.eq(
+"id",
+id
+)
+
+.single();
+
+
+
+
+
+
+if(error){
+
+console.error(error);
+
+return;
+
+}
+
+
+
+
+
+
+
+document.getElementById(
+"customerName"
+).value =
+data.nombre;
+
+
+
+document.getElementById(
+"customerEmail"
+).value =
+data.email;
+
+
+
+document.getElementById(
+"customerPhone"
+).value =
+data.telefono || "";
+
+
+
+document.getElementById(
+"customerAddress"
+).value =
+data.direccion || "";
+
+
+
+
+
+currentCustomerId=id;
+
+
+
+document.getElementById(
+"customerFormTitle"
+).textContent =
+"Editar cliente";
+
+
+
+document.getElementById(
+"saveCustomerBtn"
+).textContent =
+"Actualizar cliente";
+
+
+
+document.getElementById(
+"cancelEditCustomer"
+).style.display =
+"block";
+
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
 
 
 }
+
+
+
+
+
+
+
+// ==============================
+// ELIMINAR CLIENTE
+// ==============================
+
+
+async function deleteCustomer(id){
+
+
+
+if(!confirm(
+"¿Eliminar cliente?"
+))
+return;
+
+
+
+
+
+
+const {error}=
+
+await supabaseClient
+
+.from("clientes")
+
+.delete()
+
+.eq(
+"id",
+id
+);
+
+
+
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"No se pudo eliminar"
+);
+
+return;
+
+}
+
+
+
+
+
+loadCustomers();
+
+
+}
+
+
+
+
+
+
+
+// ==============================
+// BUSCADOR
+// ==============================
+
+
+const searchInput =
+document.getElementById(
+"customerSearch"
+);
+
+
+
+if(searchInput){
+
+
+
+searchInput.addEventListener(
+"input",
+function(){
+
+
+loadCustomers(
+this.value
+);
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+// ==============================
+// CANCELAR EDICIÓN
+// ==============================
+
+
+const cancelBtn =
+document.getElementById(
+"cancelEditCustomer"
+);
+
+
+
+if(cancelBtn){
+
+
+
+cancelBtn.addEventListener(
+"click",
+function(){
+
+
+currentCustomerId=null;
+
+
+customerForm.reset();
+
+
+document.getElementById(
+"customerFormTitle"
+).textContent =
+"Nuevo cliente";
+
+
+document.getElementById(
+"saveCustomerBtn"
+).textContent =
+"Guardar cliente";
+
+
+this.style.display="none";
+
+
+});
+
+
+}
+
 
 
 
