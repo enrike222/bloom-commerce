@@ -18,13 +18,15 @@
 
 <link rel="stylesheet" href="../assets/css/buttons.css">
 
-<link rel="stylesheet" href="../assets/css/cards.css">
+
 
 <link rel="stylesheet" href="../assets/css/animations.css">
 
 <link rel="stylesheet" href="../assets/css/sidebar.css">
 
 <link rel="stylesheet" href="../assets/css/admin.css">
+
+<link rel="stylesheet" href="../assets/css/cards.css">
 
 
 </head>
@@ -38,6 +40,7 @@
 <!-- SIDEBAR -->
 
 <div id="sidebar-container"></div>
+
 
 
 
@@ -65,7 +68,10 @@ Administra tus productos, precios e imágenes.
 
 
 
+
+
 <section class="product-admin-form">
+
 
 
 <h2>
@@ -88,6 +94,7 @@ required>
 
 
 
+
 <input 
 type="number"
 id="productPrice"
@@ -98,31 +105,14 @@ required>
 
 
 
+
+
 <select id="productCategory" required>
 
 
 <option value="">
 Selecciona categoría
-</option>
 
-
-<option value="Ramos">
-Ramos
-</option>
-
-
-<option value="Arreglos">
-Arreglos
-</option>
-
-
-<option value="Eventos">
-Eventos
-</option>
-
-
-<option value="Regalos">
-Regalos
 </option>
 
 
@@ -132,19 +122,41 @@ Regalos
 
 
 
+
+
 <textarea
+
 id="productDescription"
-placeholder="Descripción">
+
+placeholder="Descripción del producto">
+
 </textarea>
 
 
 
 
 
+
+
 <input 
+
 type="file"
+
 id="productImage"
+
 accept="image/*">
+
+
+
+
+
+
+<div id="imagePreview" class="image-preview">
+
+</div>
+
+
+
 
 
 
@@ -154,13 +166,19 @@ accept="image/*">
 
 
 <option value="disponible">
+
 Disponible
+
 </option>
+
 
 
 <option value="agotado">
+
 Agotado
+
 </option>
+
 
 
 </select>
@@ -168,18 +186,35 @@ Agotado
 
 
 
-<button id="saveProductBtn"
+
+
+
+
+<button 
+
+id="saveProductBtn"
+
 type="submit">
 
+
 Guardar producto
+
 
 </button>
 
 
 
+
+
+
+
+
 <button 
+
 id="cancelEditBtn"
+
 type="button"
+
 style="display:none;">
 
 
@@ -190,10 +225,18 @@ Cancelar edición
 
 
 
+
+
+
 </form>
 
 
+
 </section>
+
+
+
+
 
 
 
@@ -202,16 +245,27 @@ Cancelar edición
 <section class="products-list">
 
 
+
 <h2>
+
 Productos registrados
+
 </h2>
 
 
 
-<div id="productsContainer">
+
+
+<div 
+
+id="productsContainer"
+
+class="products-grid">
 
 
 </div>
+
+
 
 
 
@@ -220,7 +274,13 @@ Productos registrados
 
 
 
+
+
+
 </main>
+
+
+
 
 
 

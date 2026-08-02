@@ -14,7 +14,7 @@ let currentProductId = null;
 async function loadCategories(){
 
 
-    const {data,error}=await supabaseClient
+    const { data, error } = await supabaseClient
     .from("categorias")
     .select("id,nombre")
     .order("nombre");
@@ -37,15 +37,18 @@ async function loadCategories(){
     document.getElementById("productCategory");
 
 
+
     select.innerHTML = `
+
     <option value="">
     Selecciona categoría
     </option>
+
     `;
 
 
 
-    data.forEach(category=>{
+    data.forEach(category => {
 
 
         select.innerHTML += `
@@ -58,7 +61,6 @@ async function loadCategories(){
 
 
     });
-
 
 
 }
@@ -91,6 +93,7 @@ let imageUrl = null;
 
 
 
+
 // SUBIR IMAGEN
 
 if(imageFile){
@@ -110,6 +113,7 @@ if(imageFile){
 
 
 
+
     const fileName =
     Date.now() +
     "-" +
@@ -118,14 +122,11 @@ if(imageFile){
 
 
 
-    const {error:uploadError}=
 
+    const { error: uploadError } =
     await supabaseClient
-
     .storage
-
     .from("bloom-products")
-
     .upload(
         fileName,
         imageFile
@@ -151,14 +152,10 @@ if(imageFile){
 
 
 
-    const {data:urlData}=
-
+    const { data:urlData } =
     supabaseClient
-
     .storage
-
     .from("bloom-products")
-
     .getPublicUrl(
         fileName
     );
@@ -167,6 +164,7 @@ if(imageFile){
 
     imageUrl =
     urlData.publicUrl;
+
 
 
 }
@@ -204,14 +202,15 @@ const product = {
     document.getElementById("productStatus").value
 
 
-
 };
+
+
 
 
 
 if(imageUrl){
 
-    product.imagen=imageUrl;
+    product.imagen = imageUrl;
 
 }
 
@@ -228,6 +227,7 @@ let result;
 if(currentProductId){
 
 
+
     result =
     await supabaseClient
 
@@ -241,7 +241,9 @@ if(currentProductId){
     );
 
 
+
 }else{
+
 
 
     result =
@@ -252,7 +254,9 @@ if(currentProductId){
     .insert([product]);
 
 
+
 }
+
 
 
 
@@ -261,15 +265,19 @@ if(currentProductId){
 
 if(result.error){
 
+
     console.error(
         result.error
     );
+
 
     alert(
     "Error guardando producto"
     );
 
+
     return;
+
 
 }
 
@@ -277,17 +285,27 @@ if(result.error){
 
 
 
+
+
 alert(
+
 currentProductId ?
-"Producto actualizado" :
-"Producto creado"
+
+"Producto actualizado correctamente"
+
+:
+
+"Producto creado correctamente"
+
 );
 
 
 
 
 
-currentProductId=null;
+
+
+currentProductId = null;
 
 
 productForm.reset();
@@ -319,7 +337,7 @@ async function loadProducts(){
 
 
 
-const {data,error}=
+const { data, error } =
 
 await supabaseClient
 
@@ -330,9 +348,7 @@ await supabaseClient
 *,
 
 categorias(
-
 nombre
-
 )
 
 `)
@@ -342,6 +358,7 @@ nombre
 {
 ascending:false
 }
+
 );
 
 
@@ -359,6 +376,8 @@ return;
 
 
 
+
+
 const container =
 document.getElementById(
 "productsContainer"
@@ -366,18 +385,20 @@ document.getElementById(
 
 
 
-container.innerHTML="";
+
+container.innerHTML = "";
 
 
 
 
 
-data.forEach(product=>{
+
+
+data.forEach(product => {
 
 
 
 container.innerHTML += `
-
 
 
 <div class="product-card">
@@ -394,11 +415,13 @@ alt="${product.nombre}"
 
 
 
+
 <h3>
 
 ${product.nombre}
 
 </h3>
+
 
 
 
@@ -410,11 +433,13 @@ ${product.nombre}
 
 
 
+
 <p>
 
 Q${product.precio}
 
 </p>
+
 
 
 
@@ -426,6 +451,7 @@ ${product.estado}
 
 
 
+
 <button onclick="editProduct('${product.id}')">
 
 ✏️ Editar
@@ -434,11 +460,13 @@ ${product.estado}
 
 
 
+
 <button onclick="deleteProduct('${product.id}')">
 
 🗑️ Eliminar
 
 </button>
+
 
 
 
@@ -465,7 +493,7 @@ ${product.estado}
 
 
 // ===============================
-// EDITAR
+// EDITAR PRODUCTO
 // ===============================
 
 
@@ -473,7 +501,7 @@ async function editProduct(id){
 
 
 
-const {data,error}=
+const { data,error } =
 
 await supabaseClient
 
@@ -504,20 +532,26 @@ return;
 
 
 
+
+
 document.getElementById("productName").value =
 data.nombre;
+
 
 
 document.getElementById("productPrice").value =
 data.precio;
 
 
+
 document.getElementById("productCategory").value =
 data.categoria_id;
 
 
+
 document.getElementById("productDescription").value =
 data.descripcion;
+
 
 
 document.getElementById("productStatus").value =
@@ -525,7 +559,11 @@ data.estado;
 
 
 
-currentProductId=id;
+
+
+currentProductId = id;
+
+
 
 
 
@@ -536,10 +574,14 @@ document.getElementById(
 
 
 
+
+
 document.getElementById(
 "cancelEditBtn"
 ).style.display =
 "inline-block";
+
+
 
 
 
@@ -564,7 +606,7 @@ behavior:"smooth"
 
 
 // ===============================
-// ELIMINAR
+// ELIMINAR PRODUCTO
 // ===============================
 
 
@@ -572,18 +614,21 @@ async function deleteProduct(id){
 
 
 
-if(
-!confirm(
+const confirmDelete =
+confirm(
 "¿Eliminar producto?"
-)
-
-)return;
+);
 
 
 
+if(!confirmDelete)
+return;
 
 
-const {error}=
+
+
+
+const { error } =
 
 await supabaseClient
 
@@ -600,17 +645,23 @@ id
 
 
 
+
 if(error){
 
+
 console.error(error);
+
 
 alert(
 "No se pudo eliminar"
 );
 
+
 return;
 
+
 }
+
 
 
 
@@ -619,6 +670,7 @@ return;
 alert(
 "Producto eliminado"
 );
+
 
 
 loadProducts();
@@ -634,14 +686,23 @@ loadProducts();
 
 
 
+
 // ===============================
 // CANCELAR EDICIÓN
 // ===============================
 
 
-document
-.getElementById("cancelEditBtn")
-.addEventListener(
+const cancelButton =
+document.getElementById(
+"cancelEditBtn"
+);
+
+
+
+if(cancelButton){
+
+
+cancelButton.addEventListener(
 "click",
 ()=>{
 
@@ -655,7 +716,13 @@ productForm.reset();
 resetEditMode();
 
 
+
 });
+
+
+
+}
+
 
 
 
@@ -665,6 +732,7 @@ resetEditMode();
 function resetEditMode(){
 
 
+
 document.getElementById(
 "saveProductBtn"
 ).textContent =
@@ -672,10 +740,99 @@ document.getElementById(
 
 
 
+
+
 document.getElementById(
 "cancelEditBtn"
 ).style.display =
 "none";
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// PREVIEW IMAGEN
+// ===============================
+
+
+const imageInput =
+document.getElementById(
+"productImage"
+);
+
+
+
+const imagePreview =
+document.getElementById(
+"imagePreview"
+);
+
+
+
+
+if(imageInput && imagePreview){
+
+
+
+imageInput.addEventListener(
+"change",
+function(){
+
+
+
+const file =
+this.files[0];
+
+
+
+
+if(!file){
+
+
+imagePreview.innerHTML="";
+
+
+return;
+
+
+}
+
+
+
+
+const url =
+URL.createObjectURL(file);
+
+
+
+
+imagePreview.innerHTML = `
+
+
+<img
+
+src="${url}"
+
+alt="Vista previa"
+
+>
+
+
+`;
+
+
+
+});
+
 
 
 }

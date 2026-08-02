@@ -1,36 +1,97 @@
 /* ==============================
-   BLOOM PRODUCT CARDS
+   BLOOM PRODUCT GRID
 ============================== */
+
+
+/* CONTENEDOR DE PRODUCTOS */
+
+#productsContainer.products-grid {
+
+
+    display:grid !important;
+
+
+    grid-template-columns:repeat(4, minmax(230px, 1fr)) !important;
+
+
+    gap:28px;
+
+
+    width:100%;
+
+
+    align-items:start;
+
+
+}
+
+
+
+
+
+
+/* TARJETA PRODUCTO */
 
 
 .product-card {
 
-    background: rgba(255,255,255,0.9);
 
-    border-radius: 24px;
+    width:100%;
 
-    padding: 18px;
+
+    max-width:none;
+
+
+    background:rgba(255,255,255,0.95);
+
+
+    border-radius:24px;
+
+
+    padding:18px;
+
+
+    overflow:hidden;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    min-height:450px;
+
+
 
     box-shadow:
-    0 15px 35px rgba(0,0,0,0.08);
 
-    transition:
-    transform .3s ease,
-    box-shadow .3s ease;
+    0 15px 35px rgba(0,0,0,.08);
 
-    overflow: hidden;
+
+
+    transition:.3s ease;
+
+
 
 }
+
+
+
 
 
 
 
 .product-card:hover {
 
-    transform: translateY(-8px);
+
+    transform:translateY(-8px);
+
 
     box-shadow:
-    0 25px 50px rgba(0,0,0,0.15);
+
+    0 25px 50px rgba(0,0,0,.15);
+
 
 }
 
@@ -38,27 +99,39 @@
 
 
 
+
+
+/* ==============================
+   IMAGEN PRODUCTO BLOOM PREMIUM
+============================== */
+
 .product-card img {
 
+    width:100% !important;
 
-    width:100%;
+    height:360px !important;
 
-    aspect-ratio:1 / 1;
+    object-fit:cover !important;
 
-    object-fit:cover;
+    object-position:center;
 
     border-radius:20px;
 
     display:block;
 
-    margin-bottom:15px;
+    flex-shrink:0;
 
+    margin-bottom:18px;
 
 }
 
 
 
 
+
+
+
+/* TEXTO */
 
 
 .product-card h3 {
@@ -66,9 +139,12 @@
 
     font-size:1.2rem;
 
-    margin-bottom:8px;
+
 
     color:#2d2d2d;
+
+
+    margin:10px 0;
 
 
 }
@@ -84,6 +160,7 @@
 
     margin:6px 0;
 
+
     color:#666;
 
 
@@ -95,24 +172,38 @@
 
 
 
+/* BOTONES */
+
+
 .product-card button {
 
 
     border:none;
 
+
     padding:10px 16px;
+
 
     border-radius:14px;
 
+
     cursor:pointer;
+
 
     margin-top:10px;
 
+
     margin-right:6px;
+
 
     background:#1f8f55;
 
+
     color:white;
+
+
+    font-weight:600;
+
 
     transition:.25s;
 
@@ -128,20 +219,163 @@
 
     transform:scale(1.05);
 
+
 }
 
 
 
 
-.products-grid {
 
 
-    display:grid;
+.product-card button:last-child {
 
-    grid-template-columns:
-    repeat(auto-fit,minmax(240px,1fr));
 
-    gap:25px;
+    background:#d9534f;
+
+
+}
+
+
+
+
+
+
+
+/* PREVIEW IMAGEN FORMULARIO */
+
+
+.image-preview img {
+
+
+    width:180px;
+
+
+    height:180px;
+
+
+    object-fit:cover;
+
+
+    border-radius:22px;
+
+
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,.15);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==============================
+   TABLET GRANDE
+============================== */
+
+
+@media(max-width:1200px){
+
+
+#productsContainer.products-grid {
+
+
+    grid-template-columns:repeat(3, minmax(220px,1fr)) !important;
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==============================
+   TABLET
+============================== */
+
+
+@media(max-width:800px){
+
+
+#productsContainer.products-grid {
+
+
+    grid-template-columns:repeat(2,minmax(170px,1fr)) !important;
+
+
+}
+
+
+
+.product-card img {
+
+
+    height:320px !important;
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==============================
+   CELULAR
+============================== */
+
+
+@media(max-width:500px){
+
+
+#productsContainer.products-grid {
+
+
+    grid-template-columns:1fr !important;
+
+
+}
+
+
+
+.product-card {
+
+
+    width:100%;
+
+
+}
+
+
+
+.product-card img {
+
+
+    height:360px !important;
+
+
+}
+
 
 
 }
