@@ -65,38 +65,42 @@ Nuevo producto
 </h2>
 
 
-<form id="productform">
+<form id="productForm">
 
 
 <input 
+id="productName"
 type="text"
 placeholder="Nombre del producto"
+required
 >
 
 
 
 <input 
+id="productPrice"
 type="number"
 placeholder="Precio"
+required
 >
 
 
 
-<select>
+<select id="productCategory">
 
-<option>
+<option value="">
 Seleccionar categoría
 </option>
 
-<option>
+<option value="Ramos">
 Ramos
 </option>
 
-<option>
+<option value="Arreglos">
 Arreglos
 </option>
 
-<option>
+<option value="Regalos">
 Regalos
 </option>
 
@@ -105,6 +109,7 @@ Regalos
 
 
 <textarea
+id="productDescription"
 placeholder="Descripción del producto">
 </textarea>
 
@@ -115,18 +120,20 @@ Imagen del producto
 </label>
 
 <input 
+id="productImage"
 type="file"
+accept="image/*"
 >
 
 
 
-<select>
+<select id="productStatus">
 
-<option>
+<option value="disponible">
 Disponible
 </option>
 
-<option>
+<option value="agotado">
 Agotado
 </option>
 
@@ -134,7 +141,7 @@ Agotado
 
 
 
-<button>
+<button type="submit">
 Guardar producto
 </button>
 
@@ -171,11 +178,12 @@ Aún no hay productos creados.
 
 
 
-</main>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script src="../assets/js/supabase.js"></script>
+
 <script src="../assets/js/productsadmin.js"></script>
+
 
 </body>
 
