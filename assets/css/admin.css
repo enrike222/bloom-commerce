@@ -298,20 +298,52 @@
 
 
 
-.product-card img {
+/* =================================
+   BLOOM PRODUCT IMAGE PREMIUM
+================================= */
 
-    width:100%;
 
-    height:220px;
+.product-card {
 
-    object-fit:cover;
+    display:flex;
 
-    border-radius:18px;
-
-    transition:.4s ease;
+    flex-direction:column;
 
 }
 
+
+
+.product-card img {
+
+
+    width:100%;
+
+    height:320px;
+
+    object-fit:contain;
+
+    background:#faf8f5;
+
+    border-radius:22px;
+
+    padding:10px;
+
+    display:block;
+
+    transition:.35s ease;
+
+
+}
+
+
+
+.product-card:hover img {
+
+
+    transform:scale(1.04);
+
+
+}
 
 
 .product-card:hover img {
@@ -490,5 +522,213 @@ textarea {
     color:#4b7650;
 
     font-weight:600;
+
+}
+/* =================================
+   BLOOM PREMIUM FORM STYLE
+================================= */
+
+
+.product-admin-form,
+.category-panel,
+.customers-panel,
+.orders-panel,
+.promo-panel,
+.promo-list,
+.report-panel,
+.users-panel,
+.users-list,
+.settings-panel {
+
+    background:var(--surface-color);
+
+    border-radius:28px;
+
+    padding:35px;
+
+    box-shadow:
+    0 20px 45px rgba(0,0,0,.08);
+
+    border:1px solid rgba(255,255,255,.6);
+
+    backdrop-filter:blur(10px);
+
+}
+
+
+
+
+.product-admin-form h2,
+.category-panel h2,
+.customers-panel h2,
+.orders-panel h2,
+.promo-panel h2,
+.report-panel h2,
+.users-panel h2,
+.settings-panel h2 {
+
+    font-size:24px;
+
+    margin-bottom:25px;
+
+    color:var(--primary-color);
+
+}
+
+
+
+
+
+input,
+select,
+textarea {
+
+
+    width:100%;
+
+    padding:16px 18px;
+
+    border-radius:18px;
+
+    border:1px solid #e5e5e5;
+
+    background:#fff;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s ease;
+
+
+}
+
+
+
+
+
+input:focus,
+select:focus,
+textarea:focus {
+
+
+    border-color:var(--primary-color);
+
+    box-shadow:
+    0 0 0 4px rgba(0,0,0,.05);
+
+
+}
+
+
+
+
+
+button {
+
+
+    border-radius:18px;
+
+    padding:15px 25px;
+
+    font-weight:600;
+
+    transition:.3s ease;
+
+
+}
+
+
+
+
+
+button:hover {
+
+
+    transform:translateY(-3px);
+
+}
+
+
+
+
+
+.table-container {
+
+
+    overflow-x:auto;
+
+}
+
+
+
+
+
+table {
+
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+
+}
+
+
+
+
+
+tbody tr {
+
+
+    transition:.25s ease;
+
+
+}
+
+
+
+tbody tr:hover {
+
+
+    background:#fafafa;
+
+}
+
+
+
+
+
+.page-header {
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+.page-header h1 {
+
+
+    font-size:34px;
+
+    font-weight:800;
+
+
+}
+
+
+
+.page-header p {
+
+
+    color:#777;
+
+    margin-top:8px;
+
 
 }
