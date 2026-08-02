@@ -1,23 +1,47 @@
-console.log("products Admin cargado correctamente");
-
 const productForm = document.getElementById("productForm");
 
-productForm.addEventListener("submit", function(e) {
+productForm.addEventListener("submit", async function(e) {
 
     e.preventDefault();
 
-    const name = document.getElementById("productName").value;
-    const price = document.getElementById("productPrice").value;
-    const category = document.getElementById("productCategory").value;
-    const description = document.getElementById("productDescription").value;
-    const status = document.getElementById("productStatus").value;
+    const product = {
 
-    console.log({
-        name,
-        price,
-        category,
-        description,
-        status
-    });
+        nombre: document.getElementById("productName").value,
+
+        precio: Number(
+            document.getElementById("productPrice").value
+        ),
+
+        categoria: document.getElementById("productCategory").value,
+
+        descripcion: document.getElementById("productDescription").value,
+
+        estado: document.getElementById("productStatus").value
+
+    };
+
+
+    const { data, error } = await supabaseClient
+        .from("productos")
+        .insert([product]);
+
+
+    if(error){
+
+        console.error("Error guardando producto:", error);
+
+        alert("No se pudo guardar el producto");
+
+        return;
+
+    }
+
+
+    console.log("Producto guardado:", data);
+
+    alert("Producto guardado correctamente");
+
+
+    productForm.reset();
 
 });
