@@ -64,6 +64,8 @@ Administra tus flores y arreglos.
 Nuevo producto
 </h2>
 
+<div id="editModeMessage" class="edit-message">
+</div>
 
 <form id="productForm">
 
@@ -141,8 +143,12 @@ Agotado
 
 
 
-<button type="submit">
+<button id="saveProductBtn" type="submit">
 Guardar producto
+</button>
+
+<button id="cancelEditBtn" type="button" style="display:none;">
+Cancelar edición
 </button>
 
 
@@ -163,13 +169,7 @@ Productos registrados
 </h2>
 
 
-<div class="empty-state">
-
-🌸
-
-<p>
-Aún no hay productos creados.
-</p>
+<div id="productsContainer">
 
 </div>
 
