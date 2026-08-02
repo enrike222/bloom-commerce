@@ -8,8 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Bloom | Clientes</title>
-
+<title>Bloom | Pedidos</title>
 
 
 <link rel="stylesheet" href="../assets/css/variables.css">
@@ -50,12 +49,12 @@
 
 
 <h1>
-👥 Clientes
+🛒 Pedidos
 </h1>
 
 
 <p>
-Administra la información de tus clientes.
+Gestiona compras, pagos y entregas de clientes.
 </p>
 
 
@@ -67,13 +66,14 @@ Administra la información de tus clientes.
 
 
 
-<section class="customers-panel">
+<section class="orders-panel">
 
 
 
 <h2>
-Clientes registrados
+Pedidos recientes
 </h2>
+
 
 
 
@@ -90,23 +90,39 @@ Clientes registrados
 
 <tr>
 
+
 <th>
-Nombre
+Pedido
 </th>
 
 
 <th>
-Correo
+Cliente
 </th>
 
 
 <th>
-Teléfono
+Productos
 </th>
 
 
 <th>
-Dirección
+Total
+</th>
+
+
+<th>
+Pago
+</th>
+
+
+<th>
+Estado
+</th>
+
+
+<th>
+Fecha
 </th>
 
 
@@ -123,14 +139,15 @@ Acciones
 
 
 
-<tbody id="customersTable">
+<tbody id="ordersTable">
 
 
 <tr>
 
-<td colspan="5" class="empty-state">
 
-No hay clientes registrados.
+<td colspan="8" class="empty-state">
+
+No hay pedidos registrados.
 
 </td>
 
@@ -145,6 +162,39 @@ No hay clientes registrados.
 
 </table>
 
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<section class="orders-panel">
+
+
+
+<h2>
+Detalles del pedido
+</h2>
+
+
+
+<div id="orderDetails">
+
+
+<div class="empty-state">
+
+Selecciona un pedido para ver detalles.
+
+</div>
 
 
 </div>
@@ -176,7 +226,7 @@ No hay clientes registrados.
 <script src="../assets/js/components.js"></script>
 
 
-<script src="../assets/js/customers.js"></script>
+<script src="../assets/js/orders.js"></script>
 
 
 
