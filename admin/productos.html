@@ -7,244 +7,214 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <title>Bloom | Productos</title>
 
-
-
 <link rel="stylesheet" href="../assets/css/variables.css">
-
 <link rel="stylesheet" href="../assets/css/base.css">
-
 <link rel="stylesheet" href="../assets/css/buttons.css">
-
-
-
 <link rel="stylesheet" href="../assets/css/animations.css">
-
 <link rel="stylesheet" href="../assets/css/sidebar.css">
-
 <link rel="stylesheet" href="../assets/css/admin.css">
-
 <link rel="stylesheet" href="../assets/css/cards.css">
-
 
 </head>
 
-
-
 <body class="admin-panel">
-
-
-
-<!-- SIDEBAR -->
 
 <div id="sidebar-container"></div>
 
-
-
-
-
 <main class="admin-content">
-
-
 
 <header class="page-header">
 
-
-<h1>
-🌸 Productos Bloom
-</h1>
-
+<h1>🌸 Productos Bloom</h1>
 
 <p>
-Administra tus productos, precios e imágenes.
+Administra todos los productos de tu tienda.
 </p>
-
 
 </header>
 
 
 
+<!-- ==========================
+BARRA SUPERIOR
+=========================== -->
 
+<section class="toolbar">
 
+<div class="toolbar-left">
 
-
-<section class="product-admin-form">
-
-
-
-<h2>
-Agregar producto
-</h2>
-
-
-
-
-<form id="productForm">
-
-
-
-<input 
+<input
 type="text"
-id="productName"
-placeholder="Nombre del producto"
-required>
+id="searchProduct"
+placeholder="🔍 Buscar producto...">
 
-
-
-
-
-<input 
-type="number"
-id="productPrice"
-placeholder="Precio"
-required>
-
-
-
-
-
-
-
-<select id="productCategory" required>
-
+<select id="filterCategory">
 
 <option value="">
-Selecciona categoría
-
+Todas las categorías
 </option>
-
 
 </select>
 
+<select id="filterStatus">
 
+<option value="">
+Todos los estados
+</option>
 
+<option value="disponible">
+Disponible
+</option>
 
+<option value="agotado">
+Agotado
+</option>
 
+</select>
 
+<select id="sortProducts">
 
-<textarea
+<option value="newest">
+Más recientes
+</option>
 
-id="productDescription"
+<option value="oldest">
+Más antiguos
+</option>
 
-placeholder="Descripción del producto">
+<option value="priceAsc">
+Precio ↑
+</option>
 
-</textarea>
+<option value="priceDesc">
+Precio ↓
+</option>
 
+<option value="name">
+Nombre A-Z
+</option>
 
-
-
-
-
-
-<input 
-
-type="file"
-
-id="productImage"
-
-accept="image/*">
-
-
-
-
-
-
-<div id="imagePreview" class="image-preview">
+</select>
 
 </div>
 
+<div class="toolbar-right">
 
+<button
+id="newProductBtn"
+type="button">
 
-
-
-
-
-
-<select id="productStatus">
-
-
-<option value="disponible">
-
-Disponible
-
-</option>
-
-
-
-<option value="agotado">
-
-Agotado
-
-</option>
-
-
-
-</select>
-
-
-
-
-
-
-
-
-<button 
-
-id="saveProductBtn"
-
-type="submit">
-
-
-Guardar producto
-
+➕ Nuevo producto
 
 </button>
 
-
-
-
-
-
-
-
-<button 
-
-id="cancelEditBtn"
-
-type="button"
-
-style="display:none;">
-
-
-Cancelar edición
-
-
-</button>
-
-
-
-
-
-
-</form>
-
-
+</div>
 
 </section>
 
 
 
+<!-- ==========================
+FORMULARIO
+=========================== -->
+
+<section
+class="product-admin-form"
+id="productFormSection">
+
+<h2 id="formTitle">
+
+Agregar producto
+
+</h2>
+
+<form id="productForm">
+
+<input
+type="text"
+id="productName"
+placeholder="Nombre del producto"
+required>
+
+<input
+type="number"
+id="productPrice"
+placeholder="Precio"
+required>
+
+<select
+id="productCategory"
+required>
+
+<option value="">
+Selecciona categoría
+</option>
+
+</select>
+
+<textarea
+id="productDescription"
+placeholder="Descripción del producto">
+</textarea>
+
+<input
+type="file"
+id="productImage"
+accept="image/*">
+
+<div
+id="imagePreview"
+class="image-preview">
+</div>
+
+<select id="productStatus">
+
+<option value="disponible">
+Disponible
+</option>
+
+<option value="agotado">
+Agotado
+</option>
+
+</select>
+
+<div class="form-actions">
+
+<button
+id="saveProductBtn"
+type="submit">
+
+Guardar producto
+
+</button>
+
+<button
+id="cancelEditBtn"
+type="button"
+style="display:none;">
+
+Cancelar edición
+
+</button>
+
+</div>
+
+</form>
+
+</section>
 
 
 
-
-
+<!-- ==========================
+LISTA PRODUCTOS
+=========================== -->
 
 <section class="products-list">
 
-
+<div class="section-header">
 
 <h2>
 
@@ -252,54 +222,31 @@ Productos registrados
 
 </h2>
 
+<span id="productsCounter">
 
+0 productos
 
-
-
-<div 
-
-id="productsContainer"
-
-class="products-grid">
-
+</span>
 
 </div>
 
+<div
+id="productsContainer"
+class="products-grid">
 
-
-
+</div>
 
 </section>
 
-
-
-
-
-
-
 </main>
-
-
-
-
-
-
-
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
 <script src="../assets/js/supabase.js"></script>
-
 
 <script src="../assets/js/components.js"></script>
 
-
 <script src="../assets/js/productsadmin.js"></script>
-
-
 
 </body>
 
