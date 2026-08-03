@@ -1,799 +1,899 @@
 /* ==========================================================
    BLOOM ADMIN
    productsadmin.js
-   Versión Profesional
+   Productos con tarjetas
 ========================================================== */
 
 import { supabase } from "./supabase.js";
 
-/* ==========================================================
-   VARIABLES
-========================================================== */
 
-const tableBody = document.querySelector("#productsTableBody");
+/* ==========================
+   ELEMENTOS
+========================== */
 
-const productForm = document.querySelector("#productForm");
+const productsContainer =
+document.querySelector("#productsContainer");
 
-const saveButton = document.querySelector("#saveProduct");
+const productForm =
+document.querySelector("#productForm");
 
-const cancelButton = document.querySelector("#cancelEdit");
+const productName =
+document.querySelector("#productName");
 
-const searchInput = document.querySelector("#searchProduct");
+const productPrice =
+document.querySelector("#productPrice");
 
-const categoryFilter = document.querySelector("#filterCategory");
+const productCategory =
+document.querySelector("#productCategory");
 
-const imageInput = document.querySelector("#productImage");
+const productDescription =
+document.querySelector("#productDescription");
 
-const previewImage = document.querySelector("#previewImage");
+const productImage =
+document.querySelector("#productImage");
 
-const loader = document.querySelector("#loader");
+const imagePreview =
+document.querySelector("#imagePreview");
 
-const modal = document.querySelector("#productModal");
+const productStatus =
+document.querySelector("#productStatus");
 
-let editingId = null;
+const saveButton =
+document.querySelector("#saveProductBtn");
+
+const cancelButton =
+document.querySelector("#cancelEditBtn");
+
+const searchInput =
+document.querySelector("#searchProduct");
+
+const filterCategory =
+document.querySelector("#filterCategory");
+
+const counter =
+document.querySelector("#productsCounter");
+
 
 let products = [];
 
-let categories = [];
+let editingId = null;
 
-/* ==========================================================
-   INICIALIZACIÓN
-========================================================== */
 
-document.addEventListener("DOMContentLoaded", async () => {
 
-    initializeEvents();
+/* ==========================
+   INICIO
+========================== */
 
-    await loadCategories();
+document.addEventListener(
+"DOMContentLoaded",
+async()=>{
 
-    await loadProducts();
+
+console.log(
+"Bloom Products Admin iniciado"
+);
+
+
+events();
+
+
+await loadCategories();
+
+await loadProducts();
+
 
 });
 
-/* ==========================================================
+
+
+/* ==========================
    EVENTOS
-========================================================== */
+========================== */
 
-function initializeEvents(){
+function events(){
 
-    if(productForm){
+    
 
-        productForm.addEventListener("submit", saveProduct);
+productForm?.addEventListener(
+"submit",
+saveProduct
+);
 
-    }
 
-    if(cancelButton){
 
-        cancelButton.addEventListener("click", cancelEdit);
+cancelButton?.addEventListener(
+"click",
+cancelEdit
+);
 
-    }
 
-    if(searchInput){
 
-        searchInput.addEventListener("input", filterProducts);
+searchInput?.addEventListener(
+"input",
+filterProducts
+);
 
-    }
 
-    if(categoryFilter){
 
-        categoryFilter.addEventListener("change", filterProducts);
+filterCategory?.addEventListener(
+"change",
+filterProducts
+);
 
-    }
 
-    if(imageInput){
 
-        imageInput.addEventListener("change", previewSelectedImage);
+productImage?.addEventListener(
+"change",
+previewFile
+);
 
-    }
 
-}
-
-/* ==========================================================
-   LOADER
-========================================================== */
-
-function showLoader(){
-
-    if(loader){
-
-        loader.classList.remove("hidden");
-
-    }
 
 }
 
-function hideLoader(){
 
-    if(loader){
 
-        loader.classList.add("hidden");
+/* ==========================
+   CATEGORIAS
+========================== */
 
-    }
-
-}
-
-/* ==========================================================
-   NOTIFICACIONES
-========================================================== */
-
-function notify(message,type="success"){
-
-    const toast=document.createElement("div");
-
-    toast.className=`toast ${type}`;
-
-    toast.innerHTML=message;
-
-    document.body.appendChild(toast);
-
-    setTimeout(()=>{
-
-        toast.classList.add("show");
-
-    },50);
-
-    setTimeout(()=>{
-
-        toast.classList.remove("show");
-
-        setTimeout(()=>{
-
-            toast.remove();
-
-        },400);
-
-    },3000);
-
-}
-
-/* ==========================================================
-   VISTA PREVIA
-========================================================== */
-
-function previewSelectedImage(){
-
-    const file=imageInput.files[0];
-
-    if(!file) return;
-
-    const reader=new FileReader();
-
-    reader.onload=e=>{
-
-        previewImage.src=e.target.result;
-
-    }
-
-    reader.readAsDataURL(file);
-
-}
-
-/* ==========================================================
-   CATEGORÍAS
-========================================================== */
 
 async function loadCategories(){
 
-    const {data,error}=await supabase
+const {data,error}=await supabase
 
-        .from("categorias")
+.from("categorias")
 
-        .select("*")
+.select("*")
 
-        .order("nombre");
+.order("nombre");
 
-    if(error){
 
-        console.error(error);
+if(error){
 
-        return;
+console.error(
+"Error categorías:",
+error
+);
 
-    }
-
-    categories=data;
-
-    if(!categoryFilter) return;
-
-    categoryFilter.innerHTML=
-
-        `<option value="">Todas</option>`;
-
-    data.forEach(category=>{
-
-        categoryFilter.innerHTML+=`
-
-            <option value="${category.nombre}">
-
-                ${category.nombre}
-
-            </option>
-
-        `;
-
-    });
+return;
 
 }
-/* ==========================================================
+
+
+
+if(productCategory){
+
+productCategory.innerHTML=
+`
+<option value="">
+Selecciona categoría
+</option>
+`;
+
+
+data.forEach(cat=>{
+
+productCategory.innerHTML+=`
+
+<option value="${cat.id}">
+${cat.nombre}
+</option>
+
+`;
+
+});
+
+
+}
+
+
+
+if(filterCategory){
+
+filterCategory.innerHTML=
+`
+<option value="">
+Todas las categorías
+</option>
+`;
+
+
+data.forEach(cat=>{
+
+filterCategory.innerHTML+=`
+
+<option value="${cat.id}">
+${cat.nombre}
+</option>
+
+`;
+
+});
+
+
+}
+
+
+}
+
+
+
+function fillCategories(select,data,first){
+
+
+if(!select) return;
+
+
+
+select.innerHTML=
+
+`
+<option value="">
+${first}
+</option>
+`;
+
+
+
+data.forEach(cat=>{
+
+
+select.innerHTML+=`
+
+<option value="${cat}">
+${cat}
+</option>
+
+`;
+
+});
+
+
+}
+
+
+
+
+
+/* ==========================
    CARGAR PRODUCTOS
-========================================================== */
+========================== */
 
-async function loadProducts() {
 
-    showLoader();
+async function loadProducts(){
 
-    const { data, error } = await supabase
-        .from("productos")
-        .select("*")
-        .order("created_at", { ascending: false });
 
-    hideLoader();
 
-    if (error) {
-        console.error(error);
-        notify("Error al cargar productos", "error");
-        return;
-    }
 
-    products = data || [];
+const {data,error}=await supabase
 
-    renderProducts(products);
+.from("productos")
+
+.select(`
+    *,
+    categorias (
+        id,
+        nombre
+    )
+`)
+
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+
+console.log(
+"PRODUCTOS:",
+data
+);
+
+
+
+console.log(
+"ERROR:",
+error
+);
+
+
+
+if(error){
+
+alert(error.message);
+
+return;
 
 }
 
-/* ==========================================================
-   RENDERIZAR PRODUCTOS
-========================================================== */
 
-function renderProducts(list) {
 
-    if (!tableBody) return;
 
-    tableBody.innerHTML = "";
 
-    if (list.length === 0) {
 
-        tableBody.innerHTML = `
-            <tr>
-                <td colspan="8" class="empty-state">
-                    No hay productos registrados.
-                </td>
-            </tr>
-        `;
 
-        return;
 
-    }
 
-    list.forEach(product => {
 
-        tableBody.innerHTML += `
+products=data || [];
 
-        <tr>
 
-            <td>
 
-                <img
-                    src="${product.imagen || "../assets/img/no-image.png"}"
-                    class="table-image"
-                    alt="${product.nombre}"
-                >
+renderProducts(products);
 
-            </td>
 
-            <td>${product.nombre}</td>
-
-            <td>${product.categoria || "-"}</td>
-
-            <td>Q ${Number(product.precio).toFixed(2)}</td>
-
-            <td>
-
-                <span class="status ${product.estado === "Activo" ? "active" : "inactive"}">
-
-                    ${product.estado}
-
-                </span>
-
-            </td>
-
-            <td>
-
-                ${product.stock ?? 0}
-
-            </td>
-
-            <td>
-
-                <button
-                    class="btn-edit"
-                    onclick="editProduct('${product.id}')">
-
-                    Editar
-
-                </button>
-
-                <button
-                    class="btn-delete"
-                    onclick="deleteProduct('${product.id}')">
-
-                    Eliminar
-
-                </button>
-
-            </td>
-
-        </tr>
-
-        `;
-
-    });
 
 }
 
-/* ==========================================================
-   FILTROS
-========================================================== */
 
-function filterProducts() {
 
-    let filtered = [...products];
 
-    const text = searchInput
-        ? searchInput.value.toLowerCase().trim()
-        : "";
 
-    const category = categoryFilter
-        ? categoryFilter.value
-        : "";
 
-    if (text !== "") {
+/* ==========================
+   TARJETAS
+========================== */
 
-        filtered = filtered.filter(product =>
 
-            product.nombre.toLowerCase().includes(text) ||
+function renderProducts(list){
 
-            (product.descripcion || "")
-                .toLowerCase()
-                .includes(text)
 
-        );
+if(!productsContainer)
+return;
 
-    }
 
-    if (category !== "") {
 
-        filtered = filtered.filter(product =>
+productsContainer.innerHTML="";
 
-            product.categoria === category
 
-        );
 
-    }
+if(counter){
 
-    renderProducts(filtered);
+counter.textContent=
+`${list.length} productos`;
 
 }
 
-/* ==========================================================
+
+
+if(list.length===0){
+
+
+productsContainer.innerHTML=
+
+`
+<p>
+No hay productos registrados.
+</p>
+`;
+
+return;
+
+
+}
+
+
+
+
+
+list.forEach(product=>{
+
+
+productsContainer.innerHTML+=`
+
+
+<article class="product-card">
+
+
+<img
+
+src="${
+product.imagen ||
+"../assets/img/no-image.png"
+}"
+
+alt="${product.nombre}"
+
+>
+
+
+
+<div class="product-info">
+
+
+<h3>
+${product.nombre}
+</h3>
+
+
+
+<p>
+${product.descripcion || ""}
+</p>
+
+
+
+<strong>
+Q ${Number(product.precio).toFixed(2)}
+</strong>
+
+
+
+<span class="status">
+
+${product.estado}
+
+</span>
+
+
+
+
+
+
+
+<div class="card-actions">
+
+
+
+
+<button
+onclick="editProduct('${product.id}')">
+
+Editar
+
+</button>
+
+
+
+<button
+onclick="deleteProduct('${product.id}')">
+
+Eliminar
+
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+`;
+
+});
+
+}
+
+/* ==========================
+   BUSCAR
+========================== */
+
+
+function filterProducts(){
+
+
+let result=[...products];
+
+
+
+const text =
+searchInput?.value
+.toLowerCase()
+.trim();
+
+
+const category =
+filterCategory?.value;
+
+
+if(text){
+
+result=result.filter(p=>
+
+p.nombre
+.toLowerCase()
+.includes(text)
+
+);
+
+
+
+}
+
+
+
+if(category){
+
+
+result=result.filter(p=>
+
+p.categoria===category
+
+);
+
+
+}
+
+
+
+renderProducts(result);
+
+
+}
+
+
+
+
+/* ==========================
+   PREVIEW IMAGEN
+========================== */
+
+
+function previewFile(){
+
+
+const file=
+productImage.files[0];
+
+
+
+if(!file)
+return;
+
+
+
+const reader=
+new FileReader();
+
+
+
+reader.onload=e=>{
+
+
+imagePreview.innerHTML=
+
+`
+<img src="${e.target.result}">
+`;
+
+
+
+};
+
+
+
+reader.readAsDataURL(file);
+
+
+}
+
+
+
+
+/* ==========================
    EDITAR
-========================================================== */
+========================== */
 
-window.editProduct = function(id) {
 
-    const product = products.find(p => p.id === id);
+window.editProduct=function(id){
 
-    if (!product) return;
 
-    editingId = id;
+const product =
+products.find(
+p=>p.id===id
+);
 
-    document.querySelector("#productName").value = product.nombre || "";
+if(!product)
+return;
 
-    document.querySelector("#productDescription").value = product.descripcion || "";
+editingId=id;
 
-    document.querySelector("#productPrice").value = product.precio || "";
+productName.value =
+product.nombre || "";
 
-    document.querySelector("#productStock").value = product.stock || "";
+productPrice.value =
+product.precio || "";
 
-    document.querySelector("#productCategory").value = product.categoria || "";
+productCategory.value =
+product.categoria?.nombre || "Sin categoría";
 
-    document.querySelector("#productStatus").value = product.estado || "Activo";
+productDescription.value =
+product.descripcion || "";
 
-    if (previewImage) {
+productStatus.value =
+product.estado || "disponible";
 
-        previewImage.src = product.imagen || "";
+saveButton.textContent =
+"Actualizar producto";
 
-    }
-
-    if (saveButton) {
-
-        saveButton.textContent = "Actualizar Producto";
-
-    }
-
-    if (cancelButton) {
-
-        cancelButton.classList.remove("hidden");
-
-    }
-
-    if (modal) {
-
-        modal.scrollIntoView({
-            behavior: "smooth"
-        });
-
-    }
+cancelButton.style.display =
+"block";
 
 }
 
-/* ==========================================================
-   CANCELAR EDICIÓN
-========================================================== */
 
-function cancelEdit() {
+/* ==========================
+   CANCELAR
+========================== */
 
-    editingId = null;
 
-    if (productForm) {
+function cancelEdit(){
 
-        productForm.reset();
 
-    }
+editingId=null;
 
-    if (previewImage) {
 
-        previewImage.src = "";
 
-    }
+productForm.reset();
 
-    if (saveButton) {
 
-        saveButton.textContent = "Guardar Producto";
+imagePreview.innerHTML="";
 
-    }
 
-    if (cancelButton) {
+saveButton.textContent =
+"Guardar producto";
 
-        cancelButton.classList.add("hidden");
 
-    }
+cancelButton.style.display =
+"none";
+
 
 }
-/* ==========================================================
-   GUARDAR / ACTUALIZAR PRODUCTO
-========================================================== */
+
+
+
+
+
+/* ==========================
+   GUARDAR
+========================== */
+
+
 
 async function saveProduct(e){
 
-    e.preventDefault();
 
+e.preventDefault();
 
-    const name = document.querySelector("#productName").value.trim();
 
-    const description = document.querySelector("#productDescription").value.trim();
 
-    const price = document.querySelector("#productPrice").value;
+const data={
 
-    const stock = document.querySelector("#productStock").value;
 
-    const category = document.querySelector("#productCategory").value;
+nombre:
+productName.value.trim(),
 
-    const status = document.querySelector("#productStatus").value;
 
+precio:
+Number(productPrice.value),
 
-    if(!name || !price){
 
-        notify("Completa los campos obligatorios","error");
+categoria_id:
+productCategory.value,
 
-        return;
 
-    }
+descripcion:
+productDescription.value,
 
 
-    showLoader();
+estado:
+productStatus.value
 
 
-    let imageUrl = null;
 
+};
 
-    const imageFile = imageInput?.files[0];
 
 
-    if(imageFile){
+if(productImage.files[0]){
 
-        imageUrl = await uploadImage(imageFile);
 
-    }
+const url =
+await uploadImage(
+productImage.files[0]
+);
 
 
-    const productData = {
 
-        nombre:name,
-
-        descripcion:description,
-
-        precio:Number(price),
-
-        stock:Number(stock || 0),
-
-        categoria:category,
-
-        estado:status
-
-    };
-
-
-    if(imageUrl){
-
-        productData.imagen = imageUrl;
-
-    }
-
-
-    let response;
-
-
-    if(editingId){
-
-
-        response = await supabase
-
-            .from("productos")
-
-            .update(productData)
-
-            .eq("id",editingId);
-
-
-    }else{
-
-
-        response = await supabase
-
-            .from("productos")
-
-            .insert([productData]);
-
-
-    }
-
-
-    hideLoader();
-
-
-    if(response.error){
-
-        console.error(response.error);
-
-        notify("No se pudo guardar el producto","error");
-
-        return;
-
-    }
-
-
-    notify(
-
-        editingId
-
-        ? "Producto actualizado correctamente"
-
-        : "Producto creado correctamente"
-
-    );
-
-
-    cancelEdit();
-
-
-    await loadProducts();
+if(url)
+data.imagen=url;
 
 
 }
 
 
 
-/* ==========================================================
-   SUBIR IMAGEN A STORAGE
-========================================================== */
+
+
+let result;
+
+
+
+if(editingId){
+
+
+result =
+await supabase
+
+.from("productos")
+
+.update(data)
+
+.eq(
+"id",
+editingId
+);
+
+
+
+}else{
+
+
+result =
+await supabase
+
+.from("productos")
+
+.insert([
+data
+]);
+
+
+}
+
+
+
+
+
+if(result.error){
+
+
+console.error(result.error);
+
+alert(result.error.message);
+
+return;
+
+}
+
+
+
+
+
+
+alert(
+editingId
+?
+"Producto actualizado"
+:
+"Producto creado"
+);
+
+
+
+cancelEdit();
+
+
+
+await loadCategories();
+
+await loadProducts();
+
+
+}
+
+
+
+
+
+/* ==========================
+   STORAGE
+========================== */
 
 
 async function uploadImage(file){
 
 
-    try{
-
-
-        const fileExt = file.name.split(".").pop();
-
-
-        const fileName =
-
-            `${crypto.randomUUID()}.${fileExt}`;
+const ext =
+file.name.split(".").pop();
 
 
 
-        const filePath = `productos/${fileName}`;
+const name =
+`${crypto.randomUUID()}.${ext}`;
 
 
 
-        const {error} = await supabase.storage
-
-            .from("productos")
-
-            .upload(filePath,file);
+const path =
+`productos/${name}`;
 
 
 
-        if(error){
+const {error}=await supabase.storage
 
-            console.error(error);
+.from("productos")
 
-            notify("Error subiendo imagen","error");
-
-            return null;
-
-        }
-
-
-
-        const {data} = supabase.storage
-
-            .from("productos")
-
-            .getPublicUrl(filePath);
+.upload(
+path,
+file
+);
 
 
 
-        return data.publicUrl;
+if(error){
+
+console.error(error);
+
+return null;
+
+}
 
 
 
-    }catch(error){
+const {data}=supabase.storage
+
+.from("productos")
+
+.getPublicUrl(path);
 
 
-        console.error(error);
 
-        return null;
-
-
-    }
+return data.publicUrl;
 
 
 }
 
 
 
-/* ==========================================================
-   ELIMINAR PRODUCTO
-========================================================== */
+
+/* ==========================
+   ELIMINAR
+========================== */
 
 
-window.deleteProduct = async function(id){
+window.deleteProduct=async function(id){
 
 
-    const confirmDelete = confirm(
-
-        "¿Seguro que deseas eliminar este producto?"
-
-    );
-
-
-    if(!confirmDelete) return;
+if(!confirm(
+"¿Eliminar producto?"
+))
+return;
 
 
 
-    showLoader();
+const {error}=await supabase
+
+.from("productos")
+
+.delete()
+
+.eq(
+"id",
+id
+);
 
 
 
-    const {error} = await supabase
+if(error){
 
-        .from("productos")
+alert(error.message);
 
-        .delete()
-
-        .eq("id",id);
-
-
-
-    hideLoader();
-
-
-
-    if(error){
-
-
-        console.error(error);
-
-        notify("No se pudo eliminar","error");
-
-        return;
-
-
-    }
-
-
-
-    notify("Producto eliminado correctamente");
-
-
-
-    await loadProducts();
-
+return;
 
 }
 
 
 
-/* ==========================================================
-   LIMPIAR FORMULARIO AL CERRAR
-========================================================== */
-
-
-window.openProductModal = function(){
-
-
-    editingId=null;
-
-
-    if(productForm){
-
-        productForm.reset();
-
-    }
-
-
-    if(previewImage){
-
-        previewImage.src="";
-
-    }
-
-
-    if(saveButton){
-
-        saveButton.textContent="Guardar Producto";
-
-    }
-
-
-    if(modal){
-
-        modal.classList.add("active");
-
-    }
-
-
-}
 
 
 
-window.closeProductModal=function(){
 
-
-    if(modal){
-
-        modal.classList.remove("active");
-
-    }
-
-
-    cancelEdit();
-
-
-}
+await loadProducts();
 
 
 
-/* ==========================================================
-   EXPORTAR
-========================================================== */
 
-export {
-
-    loadProducts,
-
-    renderProducts
 
 };
