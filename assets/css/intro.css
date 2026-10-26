@@ -1,0 +1,660 @@
+
+/* =========================================
+   BLOOM — INTRODUCCIÓN 3D
+   Estética floral elegante y ligera
+========================================= */
+
+:root {
+    --bloom-cream: #f8f3ee;
+    --bloom-rose: #e5c1c1;
+    --bloom-pink: #d5a0a5;
+    --bloom-green: #416b50;
+    --bloom-text: #403330;
+}
+
+/* Pantalla de introducción */
+
+.bloom-intro {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: grid;
+    place-items: center;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 35%,
+            #ffffff 0%,
+            #fbf6f1 45%,
+            #efe1da 100%
+        );
+
+    color: var(--bloom-text);
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+/* Salida de la introducción */
+
+.bloom-intro.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Textura sutil del fondo */
+
+.bloom-intro::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    pointer-events: none;
+    opacity: 0.16;
+
+    background-image:
+        radial-gradient(
+            #bca69a 0.6px,
+            transparent 0.7px
+        );
+
+    background-size: 7px 7px;
+}
+
+/* Contenedor principal */
+
+.intro-scene {
+    width: min(100%, 900px);
+    min-height: 100svh;
+
+    padding: 30px 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+/* Texto superior */
+
+.intro-eyebrow {
+    margin: 0 0 8px;
+
+    color: #927a70;
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+
+    letter-spacing: 0.28em;
+
+    opacity: 0;
+    animation: intro-fade-up 0.8s 0.2s ease forwards;
+}
+
+/* Escenario tridimensional */
+
+.bloom-stage {
+    position: relative;
+
+    width: min(82vw, 460px);
+    height: clamp(260px, 43vh, 390px);
+
+    margin: 0 auto;
+
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+/* Iluminación detrás de la caja */
+
+.stage-glow {
+    position: absolute;
+
+    width: 85%;
+    height: 75%;
+
+    top: 8%;
+    left: 7.5%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255, 255, 255, 0.95),
+            rgba(231, 201, 195, 0.22) 55%,
+            transparent 75%
+        );
+
+    filter: blur(12px);
+
+    animation: glow-breathe 5s ease-in-out infinite;
+}
+
+/* Sombra proyectada */
+
+.stage-shadow {
+    position: absolute;
+
+    width: 65%;
+    height: 12%;
+
+    bottom: 10%;
+    left: 17.5%;
+
+    border-radius: 50%;
+
+    background: rgba(76, 49, 43, 0.17);
+
+    filter: blur(15px);
+
+    transform: rotateX(65deg);
+}
+
+/* Caja con perspectiva */
+
+.gift-box {
+    position: absolute;
+
+    width: 50%;
+    height: 32%;
+
+    left: 25%;
+    bottom: 17%;
+
+    transform-style: preserve-3d;
+
+    transform: rotateX(4deg) rotateY(-8deg);
+
+    animation:
+        box-arrive 1.3s 0.4s cubic-bezier(.2,.7,.2,1) both,
+        box-float 5s 2s ease-in-out infinite;
+}
+
+/* Frente de la caja */
+
+.box-front {
+    position: absolute;
+    inset: 20% 0 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            120deg,
+            #e8c5c3,
+            #f4dfd8 48%,
+            #d5a0a5
+        );
+
+    border: 1px solid rgba(145, 93, 95, 0.2);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.75),
+        0 12px 24px rgba(111,73,69,.12);
+
+    transform: translateZ(22px);
+
+    color: #805b5c;
+
+    font-family: Georgia, serif;
+    font-size: clamp(11px, 2vw, 16px);
+    letter-spacing: 0.22em;
+}
+
+/* Lateral para dar profundidad */
+
+.box-side {
+    position: absolute;
+
+    top: 20%;
+    right: -12%;
+
+    width: 12%;
+    height: 80%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #c99096,
+            #b77d85
+        );
+
+    transform: rotateY(90deg);
+    transform-origin: left center;
+}
+
+/* Interior superior de la caja */
+
+.box-inside {
+    position: absolute;
+
+    top: 2%;
+    left: -2%;
+
+    width: 104%;
+    height: 28%;
+
+    border: 1px solid rgba(167,122,118,.25);
+
+    background:
+        linear-gradient(
+            145deg,
+            #dfb8b5,
+            #f6e2d8 48%,
+            #c99398
+        );
+
+    transform: rotateX(58deg) translateZ(6px);
+}
+
+/* Cinta vertical */
+
+.box-ribbon {
+    position: absolute;
+    z-index: 2;
+
+    top: 20%;
+    left: 45%;
+
+    width: 10%;
+    height: 80%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e5d0b6,
+            #fff8e9 50%,
+            #d9c19f
+        );
+
+    transform: translateZ(24px);
+}
+
+/* Flores: pétalos decorativos */
+
+.intro-flower {
+    --petal-color: #e6b5bd;
+    --flower-center: #d7b36c;
+
+    position: absolute;
+    z-index: 4;
+
+    width: 18%;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 12%,
+            var(--petal-color) 0 22%,
+            transparent 24%
+        ),
+        radial-gradient(
+            ellipse at 50% 88%,
+            var(--petal-color) 0 22%,
+            transparent 24%
+        ),
+        radial-gradient(
+            ellipse at 12% 50%,
+            var(--petal-color) 0 22%,
+            transparent 24%
+        ),
+        radial-gradient(
+            ellipse at 88% 50%,
+            var(--petal-color) 0 22%,
+            transparent 24%
+        ),
+        radial-gradient(
+            ellipse at 25% 25%,
+            var(--petal-color) 0 23%,
+            transparent 25%
+        ),
+        radial-gradient(
+            ellipse at 75% 25%,
+            var(--petal-color) 0 23%,
+            transparent 25%
+        ),
+        radial-gradient(
+            ellipse at 25% 75%,
+            var(--petal-color) 0 23%,
+            transparent 25%
+        ),
+        radial-gradient(
+            ellipse at 75% 75%,
+            var(--petal-color) 0 23%,
+            transparent 25%
+        );
+
+    filter: drop-shadow(0 4px 4px rgba(100,60,60,.12));
+
+    animation: flower-fall 1.2s ease-out forwards;
+}
+
+/* Centro de cada flor */
+
+.intro-flower::after {
+    content: "";
+
+    position: absolute;
+
+    width: 22%;
+    height: 22%;
+
+    top: 39%;
+    left: 39%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff0bd,
+            var(--flower-center) 75%
+        );
+}
+
+/* Posición y tiempos de las flores */
+
+.flower-1 {
+    --petal-color: #e6b1b9;
+    left: 23%;
+    top: 20%;
+    animation-delay: 1s;
+}
+
+.flower-2 {
+    --petal-color: #f0d4cf;
+    left: 40%;
+    top: 9%;
+    width: 20%;
+    animation-delay: 1.3s;
+}
+
+.flower-3 {
+    --petal-color: #d99ca8;
+    left: 58%;
+    top: 20%;
+    animation-delay: 1.6s;
+}
+
+.flower-4 {
+    --petal-color: #f4ded7;
+    left: 31%;
+    top: 32%;
+    width: 16%;
+    animation-delay: 1.9s;
+}
+
+.flower-5 {
+    --petal-color: #d8a0aa;
+    left: 51%;
+    top: 31%;
+    width: 19%;
+    animation-delay: 2.2s;
+}
+
+.flower-6 {
+    --petal-color: #ead0a9;
+    left: 43%;
+    top: 24%;
+    width: 14%;
+    animation-delay: 2.5s;
+}
+
+/* Marca BLOOM */
+
+.intro-brand {
+    position: relative;
+    z-index: 5;
+    margin-top: 0;
+}
+
+.intro-wordmark {
+    display: flex;
+    justify-content: center;
+
+    gap: 5px;
+    margin: 0;
+
+    color: var(--bloom-green);
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 500;
+
+    letter-spacing: 0.13em;
+    padding-left: 0.13em;
+}
+
+.intro-wordmark span {
+    display: inline-block;
+
+    opacity: 0;
+    transform: translateY(20px) rotateX(-30deg);
+
+    animation: letter-reveal 0.7s ease forwards;
+}
+
+.intro-wordmark span:nth-child(1) {
+    animation-delay: 3.4s;
+}
+
+.intro-wordmark span:nth-child(2) {
+    animation-delay: 3.55s;
+}
+
+.intro-wordmark span:nth-child(3) {
+    animation-delay: 3.7s;
+}
+
+.intro-wordmark span:nth-child(4) {
+    animation-delay: 3.85s;
+}
+
+.intro-wordmark span:nth-child(5) {
+    animation-delay: 4s;
+}
+
+/* Eslogan */
+
+.intro-tagline {
+    margin: 13px 0 22px;
+
+    color: #826e67;
+
+    font-size: clamp(.8rem, 2vw, 1rem);
+    letter-spacing: 0.025em;
+
+    opacity: 0;
+    animation: intro-fade-up .8s 4.3s ease forwards;
+}
+
+/* Botón de entrada */
+
+.intro-enter {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 14px 21px;
+
+    border: 1px solid rgba(65,107,80,.4);
+    border-radius: 50px;
+
+    color: var(--bloom-green);
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+    font-size: .8rem;
+    letter-spacing: .03em;
+
+    opacity: 0;
+    animation: intro-fade-up .8s 4.6s ease forwards;
+
+    transition:
+        color .25s ease,
+        background .25s ease,
+        transform .25s ease;
+}
+
+.intro-enter:hover {
+    color: white;
+    background: var(--bloom-green);
+    transform: translateY(-2px);
+}
+
+/* Botón para saltar la intro */
+
+.intro-skip {
+    position: absolute;
+
+    right: 25px;
+    bottom: 22px;
+
+    border: 0;
+    padding: 10px;
+
+    color: #927a70;
+    background: transparent;
+
+    font-size: .75rem;
+    cursor: pointer;
+}
+
+/* Animaciones */
+
+@keyframes flower-fall {
+    0% {
+        opacity: 0;
+        transform: translate3d(0,-160px,60px)
+                   rotate(-25deg) scale(.7);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(0,12px,10px)
+                   rotate(8deg) scale(1.04);
+    }
+
+    80% {
+        transform: translate3d(0,-5px,5px)
+                   rotate(-3deg) scale(.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0,0,0)
+                   rotate(0) scale(1);
+    }
+}
+
+@keyframes box-arrive {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.88)
+                   rotateX(12deg) rotateY(-12deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotateX(4deg) rotateY(-8deg);
+    }
+}
+
+@keyframes box-float {
+    0%, 100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -5px;
+    }
+}
+
+@keyframes letter-reveal {
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+@keyframes intro-fade-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow-breathe {
+    0%, 100% {
+        opacity: .75;
+        transform: scale(.97);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+}
+
+/* Adaptación a móviles */
+
+@media (max-width: 520px) {
+    .intro-scene {
+        padding: 20px 14px;
+    }
+
+    .bloom-stage {
+        width: 94vw;
+        height: 36vh;
+        min-height: 245px;
+    }
+
+    .intro-eyebrow {
+        font-size: 8px;
+        letter-spacing: .2em;
+    }
+
+    .intro-skip {
+        right: 14px;
+        bottom: 12px;
+    }
+}
+
+/* Accesibilidad: reducir movimiento */
+
+@media (prefers-reduced-motion: reduce) {
+    .bloom-intro *,
+    .bloom-intro {
+        animation-duration: .01ms !important;
+        animation-delay: 0ms !important;
+        transition-duration: .01ms !important;
+    }
+
+    .intro-wordmark span,
+    .intro-eyebrow,
+    .intro-tagline,
+    .intro-enter {
+        opacity: 1;
+        transform: none;
+    }
+}
